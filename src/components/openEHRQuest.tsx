@@ -17,9 +17,9 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import HealthBar from '@/components/HealthBar';
-import useSoundEffects from '@/hooks/useSoundEffects.ts';
+import useSoundEffects from '@/hooks/useSoundEffects';
 import ConfettiCelebration from '@/components/ConfettiCelebration';
-import { levels as levelsData } from '@/lib/levels.ts';
+import { levels as levelsData } from '@/lib/levels';
 
 interface GameState {
   currentLevel: number;
@@ -27,6 +27,8 @@ interface GameState {
   playerHealth: number;
   badges: string[];
   hintUsed: boolean;
+  answerSelected: boolean;
+  isCorrect: boolean;
 }
 
 const OpenEHRQuest: React.FC = () => {
@@ -36,6 +38,8 @@ const OpenEHRQuest: React.FC = () => {
     playerHealth: 100,
     badges: [],
     hintUsed: false,
+    answerSelected: false,
+    isCorrect: false,
   });
   const [soundEnabled, setSoundEnabled] = useState(true);
   const { playCorrectSound, playWrongSound, playCompletionSound } =
@@ -60,26 +64,39 @@ const OpenEHRQuest: React.FC = () => {
 
   const handleAnswer = (selectedIndex: number) => {
     const currentLevel = levels[gameState.currentLevel];
-    if (selectedIndex === currentLevel.correctAnswer) {
+    const isCorrect = selectedIndex === currentLevel.correctAnswer;
+
+    if (isCorrect) {
       if (soundEnabled) playCorrectSound();
       setGameState((prevState) => ({
         ...prevState,
         score: prevState.score + (prevState.hintUsed ? 50 : 100),
-        currentLevel: prevState.currentLevel + 1,
-        hintUsed: false,
-        badges: [
-          ...prevState.badges,
-          `Level ${prevState.currentLevel + 1} Master`,
-        ],
+        answerSelected: true,
+        isCorrect: true,
       }));
     } else {
       if (soundEnabled) playWrongSound();
       setGameState((prevState) => ({
         ...prevState,
         playerHealth: Math.max(0, prevState.playerHealth - 20),
-        hintUsed: false,
+        answerSelected: true,
+        isCorrect: false,
       }));
     }
+  };
+
+  const nextLevel = () => {
+    setGameState((prevState) => ({
+      ...prevState,
+      currentLevel: prevState.currentLevel + 1,
+      hintUsed: false,
+      answerSelected: false,
+      isCorrect: false,
+      badges: [
+        ...prevState.badges,
+        `Level ${prevState.currentLevel + 1} Master`,
+      ],
+    }));
   };
 
   const useHint = () => {
@@ -93,6 +110,8 @@ const OpenEHRQuest: React.FC = () => {
       playerHealth: 100,
       badges: [],
       hintUsed: false,
+      answerSelected: false,
+      isCorrect: false,
     });
   };
 
@@ -155,6 +174,7 @@ const OpenEHRQuest: React.FC = () => {
       </div>
     );
   }
+
   const currentLevel = levels[gameState.currentLevel];
 
   return (
@@ -196,17 +216,38 @@ const OpenEHRQuest: React.FC = () => {
                 onClick={() => handleAnswer(index)}
                 className="w-full justify-start text-left whitespace-normal h-auto"
                 variant="outline"
+                disabled={gameState.answerSelected}
               >
                 {option}
               </Button>
             ))}
           </div>
+          {gameState.answerSelected && (
+            <Alert
+              className={`mt-4 ${
+                gameState.isCorrect ? 'bg-green-100' : 'bg-red-100'
+              }`}
+            >
+              <AlertTitle>
+                {gameState.isCorrect ? 'Correct!' : 'Incorrect'}
+              </AlertTitle>
+              <AlertDescription>{currentLevel.explanation}</AlertDescription>
+            </Alert>
+          )}
+          {gameState.answerSelected && (
+            <Button onClick={nextLevel} className="w-full mt-4">
+              Next Level
+            </Button>
+          )}
           <div className="mt-4 space-y-4">
             <div className="flex justify-between items-center">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button onClick={useHint} disabled={gameState.hintUsed}>
+                    <Button
+                      onClick={useHint}
+                      disabled={gameState.hintUsed || gameState.answerSelected}
+                    >
                       <Zap className="mr-2 h-4 w-4" /> Use Hint
                     </Button>
                   </TooltipTrigger>
@@ -227,7 +268,7 @@ const OpenEHRQuest: React.FC = () => {
                 ))}
               </div>
             </div>
-            {gameState.hintUsed && (
+            {gameState.hintUsed && !gameState.answerSelected && (
               <Alert>
                 <AlertTitle>Hint</AlertTitle>
                 <AlertDescription>{currentLevel.hint}</AlertDescription>
