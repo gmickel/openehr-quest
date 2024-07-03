@@ -20,7 +20,7 @@ This little gem was conjured up with the help of Claude 3.5 Sonnet, an AI assist
 
 ## Try It Out!
 
-Ready to test your OpenEHR prowess? Head over to [GitHub Pages link] and start your quest!
+Ready to test your OpenEHR prowess? Head over to [OpenEHR Integration Quest](https://gmickel.github.io/openehr-quest/) and start your quest!
 
 ## Contribute
 

@@ -7,6 +7,7 @@
     "name": "Gordon Mickel",
     "email": "gordon@mickel.tech"
   },
+  "homepage": "https://gmickel.github.io/openehr-quest",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
