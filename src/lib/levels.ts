@@ -9,7 +9,6 @@ export interface Level {
 }
 
 export const levels: Level[] = [
-  // Existing levels (reordered and slightly modified for difficulty progression)
   {
     title: 'The Template Tavern',
     description:
@@ -44,6 +43,22 @@ export const levels: Level[] = [
     hint: 'Think about the role of archetypes in standardizing clinical data.',
   },
   {
+    title: 'The Reference Model Riddle',
+    description:
+      "The Reference Model Riddle challenges your understanding of OpenEHR's foundational structure!",
+    challenge: 'What is the primary purpose of the OpenEHR Reference Model?',
+    options: [
+      'To store patient data directly',
+      'To define the structure of clinical archetypes',
+      'To provide a stable set of abstracting building blocks for clinical information',
+      'To manage user authentication in EHR systems',
+    ],
+    correctAnswer: 2,
+    explanation:
+      'The OpenEHR Reference Model provides a stable set of abstracting building blocks for clinical information. It defines the logical structure of EHRs and the general set of data types used in healthcare, forming the foundation upon which archetypes and templates are built.',
+    hint: 'Think about the fundamental structure that supports the more specific clinical models in OpenEHR.',
+  },
+  {
     title: 'The Composition Cauldron',
     description:
       'Welcome to the Composition Cauldron, where data elements are brewed into meaningful records!',
@@ -58,6 +73,22 @@ export const levels: Level[] = [
     explanation:
       "In OpenEHR, a composition is used to represent a clinical document or event. It's the top-level structure that contains all the clinical data for a single record, such as a consultation, a test result, or a discharge summary.",
     hint: 'Consider what might represent a complete, standalone clinical record.',
+  },
+  {
+    title: 'The Two-Level Tangle',
+    description:
+      "The Two-Level Tangle tests your grasp of OpenEHR's modeling approach!",
+    challenge: 'What is meant by the "two-level modeling" approach in OpenEHR?',
+    options: [
+      'It refers to having separate models for inpatient and outpatient care',
+      'It separates the technical reference model from the clinical knowledge model',
+      'It means having two levels of user access in the EHR system',
+      'It describes a two-step process for creating medical records',
+    ],
+    correctAnswer: 1,
+    explanation:
+      'The two-level modeling approach in OpenEHR separates the technical reference model from the clinical knowledge model. This allows for a stable technical foundation while enabling flexible and evolving clinical content models.',
+    hint: 'Consider how OpenEHR separates different aspects of its modeling to achieve both stability and flexibility.',
   },
   {
     title: 'The Composition Composer',
@@ -123,6 +154,22 @@ export const levels: Level[] = [
     hint: 'Consider the various ways you might want to limit or specify how a quantity can be recorded in a clinical context.',
   },
   {
+    title: 'The Flat Format Fable',
+    description:
+      'The Flat Format Fable challenges you to understand different data representations in OpenEHR!',
+    challenge: 'What is the purpose of the "flat" format in OpenEHR?',
+    options: [
+      'To compress data for more efficient storage',
+      'To simplify data entry forms for clinicians',
+      'To provide a simplified format for API calls and data exchange',
+      'To flatten the organizational hierarchy in healthcare institutions',
+    ],
+    correctAnswer: 2,
+    explanation:
+      'The flat format in OpenEHR is used to provide a simplified format for API calls and data exchange. It presents complex hierarchical data in a flattened structure, making it easier to work with in many programming contexts and simplifying data interchange.',
+    hint: 'Think about how complex hierarchical data might be simplified for easier handling in certain contexts.',
+  },
+  {
     title: 'The Binding Bard',
     description:
       'The Binding Bard challenges you to understand the intricacies of binding terminologies in OpenEHR!',
@@ -172,6 +219,90 @@ export const levels: Level[] = [
     explanation:
       'In many OpenEHR implementations, data is typically stored in a node + path + value format. This approach preserves the hierarchical structure defined by archetypes and templates, while allowing for efficient storage and querying of the data.',
     hint: 'Think about a storage method that would allow for flexible querying while maintaining the structure defined by archetypes.',
+  },
+  {
+    title: 'The Querying Quest',
+    description:
+      'The Querying Quest tests your knowledge of data retrieval in OpenEHR systems!',
+    challenge:
+      'Which query language is specifically designed for use with OpenEHR systems?',
+    options: [
+      'SQL (Structured Query Language)',
+      'AQL (Archetype Query Language)',
+      'SPARQL (SPARQL Protocol and RDF Query Language)',
+      'XQuery (XML Query Language)',
+    ],
+    correctAnswer: 1,
+    explanation:
+      'Archetype Query Language (AQL) is specifically designed for use with OpenEHR systems. It allows for querying of clinical data based on the archetype model, enabling powerful and flexible data retrieval across OpenEHR-based systems.',
+    hint: 'Consider which query language would be tailored to the unique structure of OpenEHR data.',
+  },
+  {
+    title: 'The Template Transformer',
+    description:
+      'The Template Transformer challenges you to understand the relationship between archetypes and templates!',
+    challenge: 'How do templates differ from archetypes in OpenEHR?',
+    options: [
+      'Templates are used to create archetypes',
+      'Templates combine and constrain archetypes for specific use cases',
+      'Templates and archetypes are interchangeable terms',
+      'Templates define the basic clinical concepts, while archetypes specialize them',
+    ],
+    correctAnswer: 1,
+    explanation:
+      'In OpenEHR, templates are used to combine and constrain archetypes for specific use cases. They allow for the creation of purpose-specific data structures by selecting relevant parts of archetypes and applying additional constraints.',
+    hint: 'Think about how you might need to adapt general clinical concepts for specific scenarios or forms.',
+  },
+  {
+    title: 'The Demographic Detective',
+    description:
+      'The Demographic Detective challenges you to understand how patient information is structured in OpenEHR!',
+    challenge:
+      'Which of the following is true about demographic information in OpenEHR?',
+    options: [
+      'Demographic data is stored directly in compositions',
+      'OpenEHR uses a separate demographic model',
+      'Demographic data is always part of the EHR',
+      "OpenEHR doesn't support storing demographic information",
+    ],
+    correctAnswer: 1,
+    explanation:
+      'OpenEHR uses a separate demographic model to manage patient, practitioner, and organization information. This separation allows for more flexible and privacy-conscious handling of demographic data.',
+    hint: 'Consider how separating certain types of data might benefit data management and privacy.',
+  },
+  {
+    title: 'The Terminology Tamer',
+    description:
+      'The Terminology Tamer tests your knowledge of integrating external terminologies with OpenEHR!',
+    challenge:
+      'How does OpenEHR integrate with external terminology systems like SNOMED CT?',
+    options: [
+      "It doesn't - OpenEHR uses its own terminology exclusively",
+      'External terminologies replace OpenEHR archetypes',
+      'Through terminology bindings in archetypes and templates',
+      'By converting all external terms into OpenEHR-specific codes',
+    ],
+    correctAnswer: 2,
+    explanation:
+      'OpenEHR integrates with external terminology systems like SNOMED CT through terminology bindings in archetypes and templates. This allows for the use of standardized codes and terms within the OpenEHR structure.',
+    hint: 'Think about how OpenEHR might maintain its structure while still leveraging standardized medical terminologies.',
+  },
+  {
+    title: 'The Interoperability Innovator',
+    description:
+      'The Interoperability Innovator challenges you to think about how OpenEHR facilitates data exchange between different systems!',
+    challenge:
+      'Which feature of OpenEHR primarily contributes to its interoperability capabilities?',
+    options: [
+      'Its use of a proprietary data format',
+      'The separation of information models from clinical models',
+      'Its reliance on a single, universal database system',
+      'The requirement for all systems to use the same software',
+    ],
+    correctAnswer: 1,
+    explanation:
+      "OpenEHR's separation of information models (reference model) from clinical models (archetypes and templates) is a key feature that contributes to its interoperability. This separation allows for shared understanding of clinical concepts across different systems and contexts.",
+    hint: 'Consider how separating different aspects of the model might allow for flexibility and shared understanding.',
   },
   {
     title: 'The Composition Conjurer',
@@ -252,91 +383,6 @@ export const levels: Level[] = [
       'This AQL query correctly navigates the openEHR structure to retrieve systolic and diastolic blood pressure values from the specific archetype, filtering for the given EHR ID.',
     hint: 'AQL uses a structure similar to SQL, but with paths that navigate the openEHR data model.',
   },
-  // New levels (added for increased difficulty and broader coverage)
-  {
-    title: 'The Template Transformer',
-    description:
-      'The Template Transformer challenges you to understand the relationship between archetypes and templates!',
-    challenge: 'How do templates differ from archetypes in OpenEHR?',
-    options: [
-      'Templates are used to create archetypes',
-      'Templates combine and constrain archetypes for specific use cases',
-      'Templates and archetypes are interchangeable terms',
-      'Templates define the basic clinical concepts, while archetypes specialize them',
-    ],
-    correctAnswer: 1,
-    explanation:
-      'In OpenEHR, templates are used to combine and constrain archetypes for specific use cases. They allow for the creation of purpose-specific data structures by selecting relevant parts of archetypes and applying additional constraints.',
-    hint: 'Think about how you might need to adapt general clinical concepts for specific scenarios or forms.',
-  },
-  {
-    title: 'The Demographic Detective',
-    description:
-      'The Demographic Detective challenges you to understand how patient information is structured in OpenEHR!',
-    challenge:
-      'Which of the following is true about demographic information in OpenEHR?',
-    options: [
-      'Demographic data is stored directly in compositions',
-      'OpenEHR uses a separate demographic model',
-      'Demographic data is always part of the EHR',
-      "OpenEHR doesn't support storing demographic information",
-    ],
-    correctAnswer: 1,
-    explanation:
-      'OpenEHR uses a separate demographic model to manage patient, practitioner, and organization information. This separation allows for more flexible and privacy-conscious handling of demographic data.',
-    hint: 'Consider how separating certain types of data might benefit data management and privacy.',
-  },
-  {
-    title: 'The Terminology Tamer',
-    description:
-      'The Terminology Tamer tests your knowledge of integrating external terminologies with OpenEHR!',
-    challenge:
-      'How does OpenEHR integrate with external terminology systems like SNOMED CT?',
-    options: [
-      "It doesn't - OpenEHR uses its own terminology exclusively",
-      'External terminologies replace OpenEHR archetypes',
-      'Through terminology bindings in archetypes and templates',
-      'By converting all external terms into OpenEHR-specific codes',
-    ],
-    correctAnswer: 2,
-    explanation:
-      'OpenEHR integrates with external terminology systems like SNOMED CT through terminology bindings in archetypes and templates. This allows for the use of standardized codes and terms within the OpenEHR structure.',
-    hint: 'Think about how OpenEHR might maintain its structure while still leveraging standardized medical terminologies.',
-  },
-  {
-    title: 'The Interoperability Innovator',
-    description:
-      'The Interoperability Innovator challenges you to think about how OpenEHR facilitates data exchange between different systems!',
-    challenge:
-      'Which feature of OpenEHR primarily contributes to its interoperability capabilities?',
-    options: [
-      'Its use of a proprietary data format',
-      'The separation of information models from clinical models',
-      'Its reliance on a single, universal database system',
-      'The requirement for all systems to use the same software',
-    ],
-    correctAnswer: 1,
-    explanation:
-      "OpenEHR's separation of information models (reference model) from clinical models (archetypes and templates) is a key feature that contributes to its interoperability. This separation allows for shared understanding of clinical concepts across different systems and contexts.",
-    hint: 'Consider how separating different aspects of the model might allow for flexibility and shared understanding.',
-  },
-  {
-    title: 'The Query Quandary',
-    description:
-      'The Query Quandary tests your ability to construct complex AQL queries for real-world scenarios!',
-    challenge:
-      'Which AQL query would correctly retrieve the latest blood pressure readings for all patients diagnosed with hypertension in the last year?',
-    options: [
-      'SELECT e/ehr_id/value, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE c/context/start_time > current_date - P1Y ORDER BY c/context/start_time DESC',
-      "SELECT * FROM EHR WHERE diagnosis = 'hypertension' AND diagnosis_date > current_date - 365 ORDER BY observation_date DESC LIMIT 1",
-      "GET latest_blood_pressure FROM patients WHERE diagnosis = 'hypertension' AND diagnosis_date > now() - interval '1 year'",
-      "FIND blood_pressure IN EHR WHERE condition = 'hypertension' AND condition.date > 1 year ago ORDER BY date DESC",
-    ],
-    correctAnswer: 0,
-    explanation:
-      'This AQL query correctly navigates the openEHR structure to retrieve the latest blood pressure readings. It uses the proper archetype paths, filters for compositions created within the last year, and orders the results to get the latest readings.',
-    hint: 'Remember that AQL queries need to navigate the openEHR structure and use archetype paths. Also consider how to filter for the time range and order the results.',
-  },
   {
     title: 'The Template Tactician',
     description:
@@ -406,6 +452,23 @@ export const levels: Level[] = [
     hint: 'Consider how OpenEHR is designed to handle terminology differences while maintaining semantic meaning across systems.',
   },
   {
+    title: 'The Standardization Sage',
+    description:
+      "The Standardization Sage challenges your understanding of OpenEHR's role in health data standardization!",
+    challenge:
+      'How does OpenEHR contribute to the standardization of health data?',
+    options: [
+      'By enforcing a single, universal data format for all health records',
+      'Through its two-level modeling approach and shared archetype definitions',
+      'By requiring all healthcare providers to use the same software',
+      'Through government-mandated data structures',
+    ],
+    correctAnswer: 1,
+    explanation:
+      'OpenEHR contributes to health data standardization through its two-level modeling approach and shared archetype definitions. This allows for a common understanding of clinical concepts while maintaining flexibility for local needs, promoting semantic interoperability across different healthcare systems.',
+    hint: 'Think about how OpenEHR balances standardization with flexibility in its approach to modeling clinical data.',
+  },
+  {
     title: 'The Governance Guru',
     description:
       'The Governance Guru challenges you to apply OpenEHR principles to data governance and privacy scenarios!',
@@ -421,5 +484,22 @@ export const levels: Level[] = [
     explanation:
       "The best approach is to use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements. This allows for a standardized base of data collection while providing the flexibility to adhere to varying local data protection laws. It leverages OpenEHR's design for balancing standardization with localization.",
     hint: "Think about how OpenEHR's architecture can allow for both standardization and customization to meet diverse requirements.",
+  },
+  {
+    title: 'The Query Quandary',
+    description:
+      'The Query Quandary tests your ability to construct complex AQL queries for real-world scenarios!',
+    challenge:
+      'Which AQL query would correctly retrieve the latest blood pressure readings for all patients diagnosed with hypertension in the last year?',
+    options: [
+      'SELECT e/ehr_id/value, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE c/context/start_time > current_date - P1Y ORDER BY c/context/start_time DESC',
+      "SELECT * FROM EHR WHERE diagnosis = 'hypertension' AND diagnosis_date > current_date - 365 ORDER BY observation_date DESC LIMIT 1",
+      "GET latest_blood_pressure FROM patients WHERE diagnosis = 'hypertension' AND diagnosis_date > now() - interval '1 year'",
+      "FIND blood_pressure IN EHR WHERE condition = 'hypertension' AND condition.date > 1 year ago ORDER BY date DESC",
+    ],
+    correctAnswer: 0,
+    explanation:
+      'This AQL query correctly navigates the openEHR structure to retrieve the latest blood pressure readings. It uses the proper archetype paths, filters for compositions created within the last year, and orders the results to get the latest readings.',
+    hint: 'Remember that AQL queries need to navigate the openEHR structure and use archetype paths. Also consider how to filter for the time range and order the results.',
   },
 ];
