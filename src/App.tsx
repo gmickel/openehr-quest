@@ -1,4 +1,4 @@
-import OpenEHRQuest from './openEHRQuest';
+import OpenEHRQuest from '@/components/openEHRQuest';
 
 function App() {
   return (
