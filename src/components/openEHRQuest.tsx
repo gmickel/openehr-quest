@@ -178,6 +178,37 @@ const OpenEHRQuest: React.FC = () => {
 
   const currentLevel = levels[gameState.currentLevel];
 
+  const renderChallenge = (challenge: string, language: string) => {
+    const parts = challenge.split(/(\n\n)/);
+    let inCodeBlock = false;
+
+    return parts.map((part, index) => {
+      if (part === '\n\n') {
+        return <br key={`br-${index}`} />;
+      }
+
+      if (part.trim().startsWith('<') || part.trim().startsWith('{')) {
+        inCodeBlock = true;
+      }
+
+      if (inCodeBlock) {
+        return (
+          <CodeHighlight
+            key={`code-${index}`}
+            code={part.trim()}
+            language={language}
+          />
+        );
+      }
+
+      return (
+        <p key={`text-${index}`} className="mb-2">
+          {part}
+        </p>
+      );
+    });
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
       <Card className="w-full max-w-4xl">
@@ -206,16 +237,9 @@ const OpenEHRQuest: React.FC = () => {
           </Alert>
           <div className="my-4">
             <h2 className="text-xl font-semibold mb-2">Challenge:</h2>
-            {currentLevel.language !== 'text' ? (
-              <CodeHighlight
-                code={currentLevel.challenge}
-                language={currentLevel.language}
-              />
-            ) : (
-              <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words">
-                <code>{currentLevel.challenge}</code>
-              </pre>
-            )}{' '}
+            <div className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words">
+              {renderChallenge(currentLevel.challenge, currentLevel.language)}
+            </div>{' '}
           </div>
           <div className="space-y-2">
             {currentLevel.options.map((option, index) => (
