@@ -5,6 +5,9 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   base: '/openehr-quest/',
   plugins: [react()],
+  optimizeDeps: {
+    include: ['shiki'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

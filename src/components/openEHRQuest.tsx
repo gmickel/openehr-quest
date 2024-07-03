@@ -20,6 +20,7 @@ import HealthBar from '@/components/HealthBar';
 import useSoundEffects from '@/hooks/useSoundEffects';
 import ConfettiCelebration from '@/components/ConfettiCelebration';
 import { levels as levelsData } from '@/lib/levels';
+import CodeHighlight from '@/components/CodeHighlight';
 
 interface GameState {
   currentLevel: number;
@@ -205,9 +206,16 @@ const OpenEHRQuest: React.FC = () => {
           </Alert>
           <div className="my-4">
             <h2 className="text-xl font-semibold mb-2">Challenge:</h2>
-            <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words">
-              <code>{currentLevel.challenge}</code>
-            </pre>
+            {currentLevel.language !== 'text' ? (
+              <CodeHighlight
+                code={currentLevel.challenge}
+                language={currentLevel.language}
+              />
+            ) : (
+              <pre className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words">
+                <code>{currentLevel.challenge}</code>
+              </pre>
+            )}{' '}
           </div>
           <div className="space-y-2">
             {currentLevel.options.map((option, index) => (

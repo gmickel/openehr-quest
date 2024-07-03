@@ -6,6 +6,7 @@ export interface Level {
   correctAnswer: number;
   explanation: string;
   hint: string;
+  language: string;
 }
 
 export const levels: Level[] = [
@@ -25,6 +26,7 @@ export const levels: Level[] = [
     explanation:
       "This template represents a blood pressure measurement. The 'observation' element with the archetype ID 'openEHR-EHR-OBSERVATION.blood_pressure.v1' indicates it's for blood pressure, and the value 120 mm[Hg] is clearly visible in the structure.",
     hint: 'Look for the archetype ID and the value within the structure.',
+    language: 'xml',
   },
   {
     title: 'The Archetype Archives',
@@ -41,6 +43,7 @@ export const levels: Level[] = [
     explanation:
       'Archetypes in OpenEHR are used to define reusable clinical concepts. They provide a way to model clinical information that can be shared across different systems and contexts.',
     hint: 'Think about the role of archetypes in standardizing clinical data.',
+    language: 'text',
   },
   {
     title: 'The Reference Model Riddle',
@@ -57,6 +60,7 @@ export const levels: Level[] = [
     explanation:
       'The OpenEHR Reference Model provides a stable set of abstracting building blocks for clinical information. It defines the logical structure of EHRs and the general set of data types used in healthcare, forming the foundation upon which archetypes and templates are built.',
     hint: 'Think about the fundamental structure that supports the more specific clinical models in OpenEHR.',
+    language: 'text',
   },
   {
     title: 'The Composition Cauldron',
@@ -73,6 +77,7 @@ export const levels: Level[] = [
     explanation:
       "In OpenEHR, a composition is used to represent a clinical document or event. It's the top-level structure that contains all the clinical data for a single record, such as a consultation, a test result, or a discharge summary.",
     hint: 'Consider what might represent a complete, standalone clinical record.',
+    language: 'text',
   },
   {
     title: 'The Two-Level Tangle',
@@ -89,6 +94,7 @@ export const levels: Level[] = [
     explanation:
       'The two-level modeling approach in OpenEHR separates the technical reference model from the clinical knowledge model. This allows for a stable technical foundation while enabling flexible and evolving clinical content models.',
     hint: 'Consider how OpenEHR separates different aspects of its modeling to achieve both stability and flexibility.',
+    language: 'text',
   },
   {
     title: 'The Composition Composer',
@@ -101,6 +107,7 @@ export const levels: Level[] = [
     explanation:
       "In an OpenEHR composition, 'observation' is not typically found at the root level. The root level usually includes 'context', 'category', and 'content'. Observations and other clinical entry types are usually nested within the 'content' section.",
     hint: 'Think about the high-level structure of a composition and what elements define its overall properties.',
+    language: 'text',
   },
   {
     title: 'The Integration Inquisitor',
@@ -118,6 +125,7 @@ export const levels: Level[] = [
     explanation:
       "When posting a new composition to an OpenEHR system, you typically use a POST request with application/json content type. This allows you to send structured data in a format that's widely supported and easy to work with.",
     hint: 'Think about which HTTP method is typically used for creating new resources.',
+    language: 'text',
   },
   {
     title: 'The Versioning Vault',
@@ -135,6 +143,7 @@ export const levels: Level[] = [
     explanation:
       'OpenEHR supports versioning of compositions. You can retrieve a specific version by specifying either a version number or a timestamp, allowing access to the historical state of a composition at a particular point in time.',
     hint: 'Think about how you might want to access historical data in a medical record system.',
+    language: 'text',
   },
   {
     title: 'The Constraint Connoisseur',
@@ -152,6 +161,7 @@ export const levels: Level[] = [
     explanation:
       'In OpenEHR archetypes, quantity data types can be constrained in multiple ways. You can set a specific value, define a range of allowed values, or specify a list of allowed units. Often, a combination of these constraints is used to precisely define the acceptable values for a quantity.',
     hint: 'Consider the various ways you might want to limit or specify how a quantity can be recorded in a clinical context.',
+    language: 'text',
   },
   {
     title: 'The Flat Format Fable',
@@ -168,6 +178,7 @@ export const levels: Level[] = [
     explanation:
       'The flat format in OpenEHR is used to provide a simplified format for API calls and data exchange. It presents complex hierarchical data in a flattened structure, making it easier to work with in many programming contexts and simplifying data interchange.',
     hint: 'Think about how complex hierarchical data might be simplified for easier handling in certain contexts.',
+    language: 'text',
   },
   {
     title: 'The Binding Bard',
@@ -185,6 +196,7 @@ export const levels: Level[] = [
     explanation:
       "OpenEHR uses the 'term_bindings' section in archetypes to bind external terminologies. This allows for flexible integration of various coding systems while maintaining the archetype structure.",
     hint: 'Think about how OpenEHR maintains separation between its structure and external vocabularies.',
+    language: 'text',
   },
   {
     title: 'The Operational Template Oracle',
@@ -202,6 +214,7 @@ export const levels: Level[] = [
     explanation:
       "An Operational Template (OPT) in OpenEHR is a fully specialized and flattened form of a template. It's designed for direct use in systems, containing all the necessary information from archetypes and templates in a readily usable format.",
     hint: 'Consider what form of templates would be most immediately usable by EHR systems.',
+    language: 'text',
   },
   {
     title: 'The Persistence Pilgrim',
@@ -219,6 +232,7 @@ export const levels: Level[] = [
     explanation:
       'In many OpenEHR implementations, data is typically stored in a node + path + value format. This approach preserves the hierarchical structure defined by archetypes and templates, while allowing for efficient storage and querying of the data.',
     hint: 'Think about a storage method that would allow for flexible querying while maintaining the structure defined by archetypes.',
+    language: 'text',
   },
   {
     title: 'The Querying Quest',
@@ -236,6 +250,7 @@ export const levels: Level[] = [
     explanation:
       'Archetype Query Language (AQL) is specifically designed for use with OpenEHR systems. It allows for querying of clinical data based on the archetype model, enabling powerful and flexible data retrieval across OpenEHR-based systems.',
     hint: 'Consider which query language would be tailored to the unique structure of OpenEHR data.',
+    language: 'text',
   },
   {
     title: 'The Template Transformer',
@@ -252,6 +267,7 @@ export const levels: Level[] = [
     explanation:
       'In OpenEHR, templates are used to combine and constrain archetypes for specific use cases. They allow for the creation of purpose-specific data structures by selecting relevant parts of archetypes and applying additional constraints.',
     hint: 'Think about how you might need to adapt general clinical concepts for specific scenarios or forms.',
+    language: 'text',
   },
   {
     title: 'The Demographic Detective',
@@ -269,6 +285,7 @@ export const levels: Level[] = [
     explanation:
       'OpenEHR uses a separate demographic model to manage patient, practitioner, and organization information. This separation allows for more flexible and privacy-conscious handling of demographic data.',
     hint: 'Consider how separating certain types of data might benefit data management and privacy.',
+    language: 'text',
   },
   {
     title: 'The Terminology Tamer',
@@ -286,6 +303,7 @@ export const levels: Level[] = [
     explanation:
       'OpenEHR integrates with external terminology systems like SNOMED CT through terminology bindings in archetypes and templates. This allows for the use of standardized codes and terms within the OpenEHR structure.',
     hint: 'Think about how OpenEHR might maintain its structure while still leveraging standardized medical terminologies.',
+    language: 'text',
   },
   {
     title: 'The Interoperability Innovator',
@@ -303,6 +321,7 @@ export const levels: Level[] = [
     explanation:
       "OpenEHR's separation of information models (reference model) from clinical models (archetypes and templates) is a key feature that contributes to its interoperability. This separation allows for shared understanding of clinical concepts across different systems and contexts.",
     hint: 'Consider how separating different aspects of the model might allow for flexibility and shared understanding.',
+    language: 'text',
   },
   {
     title: 'The Composition Conjurer',
@@ -365,6 +384,7 @@ export const levels: Level[] = [
     explanation:
       'The correct composition follows the OpenEHR structure, including the proper archetype ID, and nests the temperature value within the expected data structure.',
     hint: 'Consider the hierarchical structure of OpenEHR compositions and how data is typically represented.',
+    language: 'text',
   },
   {
     title: 'The AQL Alchemist',
@@ -382,6 +402,7 @@ export const levels: Level[] = [
     explanation:
       'This AQL query correctly navigates the openEHR structure to retrieve systolic and diastolic blood pressure values from the specific archetype, filtering for the given EHR ID.',
     hint: 'AQL uses a structure similar to SQL, but with paths that navigate the openEHR data model.',
+    language: 'text',
   },
   {
     title: 'The Template Tactician',
@@ -399,6 +420,7 @@ export const levels: Level[] = [
     explanation:
       'The best approach is to use a template to constrain and combine existing archetypes. This allows reuse of established archetypes for vital signs, medications, and instructions, while tailoring them to the specific needs of a discharge summary. It maintains consistency and interoperability while meeting the specific use case.',
     hint: 'Think about how templates and archetypes work together, and the principle of reusing and constraining existing models.',
+    language: 'text',
   },
   {
     title: 'The Archetype Architect',
@@ -416,6 +438,7 @@ export const levels: Level[] = [
     explanation:
       'The best approach is to create a moderate-sized archetype focusing on key smoking history elements, with the ability to extend or specialize later. This balances the need for specific smoking-related data capture with the OpenEHR principles of reusability and maintainability. It allows for future refinement without overcomplicating the initial design.',
     hint: 'Consider the balance between specificity and reusability in archetype design, as well as the potential for future extensions.',
+    language: 'text',
   },
   {
     title: 'The Versioning Virtuoso',
@@ -433,6 +456,7 @@ export const levels: Level[] = [
     explanation:
       "The appropriate approach is to create a new version of the archetype, deprecate the old one, and update systems gradually. This maintains backward compatibility for existing data while allowing systems to adopt the corrected version. It follows OpenEHR's principles of versioning and change management.",
     hint: 'Think about how to balance the need for correction with the reality of existing data and systems using the current version.',
+    language: 'text',
   },
   {
     title: 'The Semantic Sage',
@@ -450,6 +474,7 @@ export const levels: Level[] = [
     explanation:
       "The best approach is to use OpenEHR's terminology binding features to map both systems to a common standard terminology. This preserves the local terminologies while ensuring semantic interoperability through a shared standard. It leverages OpenEHR's design for handling diverse terminologies.",
     hint: 'Consider how OpenEHR is designed to handle terminology differences while maintaining semantic meaning across systems.',
+    language: 'text',
   },
   {
     title: 'The Standardization Sage',
@@ -467,6 +492,7 @@ export const levels: Level[] = [
     explanation:
       'OpenEHR contributes to health data standardization through its two-level modeling approach and shared archetype definitions. This allows for a common understanding of clinical concepts while maintaining flexibility for local needs, promoting semantic interoperability across different healthcare systems.',
     hint: 'Think about how OpenEHR balances standardization with flexibility in its approach to modeling clinical data.',
+    language: 'text',
   },
   {
     title: 'The Governance Guru',
@@ -484,6 +510,7 @@ export const levels: Level[] = [
     explanation:
       "The best approach is to use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements. This allows for a standardized base of data collection while providing the flexibility to adhere to varying local data protection laws. It leverages OpenEHR's design for balancing standardization with localization.",
     hint: "Think about how OpenEHR's architecture can allow for both standardization and customization to meet diverse requirements.",
+    language: 'text',
   },
   {
     title: 'The Query Quandary',
@@ -501,5 +528,6 @@ export const levels: Level[] = [
     explanation:
       'This AQL query correctly navigates the openEHR structure to retrieve the latest blood pressure readings. It uses the proper archetype paths, filters for compositions created within the last year, and orders the results to get the latest readings.',
     hint: 'Remember that AQL queries need to navigate the openEHR structure and use archetype paths. Also consider how to filter for the time range and order the results.',
+    language: 'text',
   },
 ];
