@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 
-const useSoundEffects = () => {
+function useSoundEffects() {
   const playSound = useCallback((frequency: number, duration: number) => {
-    const audioContext = new (window.AudioContext ||
-      (window as any).webkitAudioContext)();
+    const audioContext = new (window.AudioContext
+      || (window as any).webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
@@ -17,7 +17,7 @@ const useSoundEffects = () => {
     gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.01);
     gainNode.gain.linearRampToValueAtTime(
       0,
-      audioContext.currentTime + duration
+      audioContext.currentTime + duration,
     );
 
     oscillator.start(audioContext.currentTime);
@@ -33,6 +33,6 @@ const useSoundEffects = () => {
   }, [playSound]);
 
   return { playCorrectSound, playWrongSound, playCompletionSound };
-};
+}
 
 export default useSoundEffects;

@@ -19,10 +19,12 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language }) => {
           theme: 'github-dark', // You can change this to any theme you prefer
         });
         setHighlightedCode(html);
-      } catch (error) {
+      }
+      catch (error) {
         console.error('Error highlighting code:', error);
         setHighlightedCode(`<pre><code>${code}</code></pre>`);
-      } finally {
+      }
+      finally {
         setIsLoading(false);
       }
     };
