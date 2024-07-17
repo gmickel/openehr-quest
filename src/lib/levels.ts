@@ -15,23 +15,23 @@ export const levels: Level[] = [
     description:
       'Welcome to The Template Tavern! Your first quest is to decipher a mysterious web template. Choose the correct interpretation to proceed.',
     challenge:
-      "You encounter a web template with the following structure:\n\n<composition>\n  <content>\n    <observation archetype_id='openEHR-EHR-OBSERVATION.blood_pressure.v1'>\n      <data>\n        <events xsi:type='POINT_EVENT'>\n          <data>\n            <items id='at0004'>\n              <value xsi:type='DV_QUANTITY'>\n                <magnitude>120</magnitude>\n                <units>mm[Hg]</units>\n              </value>\n            </items>\n          </data>\n        </events>\n      </data>\n    </observation>\n  </content>\n</composition>",
+      'You encounter a web template with the following structure:\n\n<composition>\n  <content>\n    <observation archetype_id=\'openEHR-EHR-OBSERVATION.blood_pressure.v1\'>\n      <data>\n        <events xsi:type=\'POINT_EVENT\'>\n          <data>\n            <items id=\'at0004\'>\n              <value xsi:type=\'DV_QUANTITY\'>\n                <magnitude>120</magnitude>\n                <units>mm[Hg]</units>\n              </value>\n            </items>\n          </data>\n        </events>\n      </data>\n    </observation>\n  </content>\n</composition>',
     options: [
-      "It's a recipe for a health potion",
-      "It's a map to the hidden treasure of OpenEHR",
-      "It's a blood pressure measurement of 120 mm[Hg]",
-      "It's the secret code to unlock the next dungeon",
+      'It\'s a recipe for a health potion',
+      'It\'s a map to the hidden treasure of OpenEHR',
+      'It\'s a blood pressure measurement of 120 mm[Hg]',
+      'It\'s the secret code to unlock the next dungeon',
     ],
     correctAnswer: 2,
     explanation:
-      "This template represents a blood pressure measurement. The 'observation' element with the archetype ID 'openEHR-EHR-OBSERVATION.blood_pressure.v1' indicates it's for blood pressure, and the value 120 mm[Hg] is clearly visible in the structure.",
+      'This template represents a blood pressure measurement. The \'observation\' element with the archetype ID \'openEHR-EHR-OBSERVATION.blood_pressure.v1\' indicates it\'s for blood pressure, and the value 120 mm[Hg] is clearly visible in the structure.',
     hint: 'Look for the archetype ID and the value within the structure.',
     language: 'xml',
   },
   {
     title: 'The Archetype Archives',
     description:
-      "You've entered the Archetype Archives. Decipher the ancient scrolls to progress!",
+      'You\'ve entered the Archetype Archives. Decipher the ancient scrolls to progress!',
     challenge: 'What is the primary purpose of archetypes in OpenEHR?',
     options: [
       'To store patient data',
@@ -48,7 +48,7 @@ export const levels: Level[] = [
   {
     title: 'The Reference Model Riddle',
     description:
-      "The Reference Model Riddle challenges your understanding of OpenEHR's foundational structure!",
+      'The Reference Model Riddle challenges your understanding of OpenEHR\'s foundational structure!',
     challenge: 'What is the primary purpose of the OpenEHR Reference Model?',
     options: [
       'To store patient data directly',
@@ -75,14 +75,14 @@ export const levels: Level[] = [
     ],
     correctAnswer: 2,
     explanation:
-      "In OpenEHR, a composition is used to represent a clinical document or event. It's the top-level structure that contains all the clinical data for a single record, such as a consultation, a test result, or a discharge summary.",
+      'In OpenEHR, a composition is used to represent a clinical document or event. It\'s the top-level structure that contains all the clinical data for a single record, such as a consultation, a test result, or a discharge summary.',
     hint: 'Consider what might represent a complete, standalone clinical record.',
     language: 'text',
   },
   {
     title: 'The Two-Level Tangle',
     description:
-      "The Two-Level Tangle tests your grasp of OpenEHR's modeling approach!",
+      'The Two-Level Tangle tests your grasp of OpenEHR\'s modeling approach!',
     challenge: 'What is meant by the "two-level modeling" approach in OpenEHR?',
     options: [
       'It refers to having separate models for inpatient and outpatient care',
@@ -105,7 +105,7 @@ export const levels: Level[] = [
     options: ['context', 'category', 'content', 'observation'],
     correctAnswer: 3,
     explanation:
-      "In an OpenEHR composition, 'observation' is not typically found at the root level. The root level usually includes 'context', 'category', and 'content'. Observations and other clinical entry types are usually nested within the 'content' section.",
+      'In an OpenEHR composition, \'observation\' is not typically found at the root level. The root level usually includes \'context\', \'category\', and \'content\'. Observations and other clinical entry types are usually nested within the \'content\' section.',
     hint: 'Think about the high-level structure of a composition and what elements define its overall properties.',
     language: 'text',
   },
@@ -123,7 +123,7 @@ export const levels: Level[] = [
     ],
     correctAnswer: 3,
     explanation:
-      "When posting a new composition to an OpenEHR system, you typically use a POST request with application/json content type. This allows you to send structured data in a format that's widely supported and easy to work with.",
+      'When posting a new composition to an OpenEHR system, you typically use a POST request with application/json content type. This allows you to send structured data in a format that\'s widely supported and easy to work with.',
     hint: 'Think about which HTTP method is typically used for creating new resources.',
     language: 'text',
   },
@@ -188,13 +188,13 @@ export const levels: Level[] = [
       'Which method is used to bind external terminologies to archetype nodes?',
     options: [
       'Direct insertion of codes into archetypes',
-      "Using the 'term_bindings' section in archetypes",
+      'Using the \'term_bindings\' section in archetypes',
       'Creating separate terminology archetypes',
       'Modifying the reference model to include terminologies',
     ],
     correctAnswer: 1,
     explanation:
-      "OpenEHR uses the 'term_bindings' section in archetypes to bind external terminologies. This allows for flexible integration of various coding systems while maintaining the archetype structure.",
+      'OpenEHR uses the \'term_bindings\' section in archetypes to bind external terminologies. This allows for flexible integration of various coding systems while maintaining the archetype structure.',
     hint: 'Think about how OpenEHR maintains separation between its structure and external vocabularies.',
     language: 'text',
   },
@@ -212,7 +212,7 @@ export const levels: Level[] = [
     ],
     correctAnswer: 1,
     explanation:
-      "An Operational Template (OPT) in OpenEHR is a fully specialized and flattened form of a template. It's designed for direct use in systems, containing all the necessary information from archetypes and templates in a readily usable format.",
+      'An Operational Template (OPT) in OpenEHR is a fully specialized and flattened form of a template. It\'s designed for direct use in systems, containing all the necessary information from archetypes and templates in a readily usable format.',
     hint: 'Consider what form of templates would be most immediately usable by EHR systems.',
     language: 'text',
   },
@@ -279,7 +279,7 @@ export const levels: Level[] = [
       'Demographic data is stored directly in compositions',
       'OpenEHR uses a separate demographic model',
       'Demographic data is always part of the EHR',
-      "OpenEHR doesn't support storing demographic information",
+      'OpenEHR doesn\'t support storing demographic information',
     ],
     correctAnswer: 1,
     explanation:
@@ -294,7 +294,7 @@ export const levels: Level[] = [
     challenge:
       'How does OpenEHR integrate with external terminology systems like SNOMED CT?',
     options: [
-      "It doesn't - OpenEHR uses its own terminology exclusively",
+      'It doesn\'t - OpenEHR uses its own terminology exclusively',
       'External terminologies replace OpenEHR archetypes',
       'Through terminology bindings in archetypes and templates',
       'By converting all external terms into OpenEHR-specific codes',
@@ -319,16 +319,16 @@ export const levels: Level[] = [
     ],
     correctAnswer: 1,
     explanation:
-      "OpenEHR's separation of information models (reference model) from clinical models (archetypes and templates) is a key feature that contributes to its interoperability. This separation allows for shared understanding of clinical concepts across different systems and contexts.",
+      'OpenEHR\'s separation of information models (reference model) from clinical models (archetypes and templates) is a key feature that contributes to its interoperability. This separation allows for shared understanding of clinical concepts across different systems and contexts.',
     hint: 'Consider how separating different aspects of the model might allow for flexibility and shared understanding.',
     language: 'text',
   },
   {
     title: 'The Composition Conjurer',
     description:
-      "You've made it to the Composition Conjurer's lair! Your task is to craft a composition that will impress the Conjurer.",
+      'You\'ve made it to the Composition Conjurer\'s lair! Your task is to craft a composition that will impress the Conjurer.',
     challenge:
-      "Create a composition for a patient's body temperature. The archetype ID is 'openEHR-EHR-OBSERVATION.body_temperature.v2'. The temperature is 37.5°C.",
+      'Create a composition for a patient\'s body temperature. The archetype ID is \'openEHR-EHR-OBSERVATION.body_temperature.v2\'. The temperature is 37.5°C.',
     options: [
       `{
   "composition": {
@@ -391,12 +391,12 @@ export const levels: Level[] = [
     description:
       'Enter the laboratory of the AQL Alchemist, where queries are brewed to extract the essence of clinical data!',
     challenge:
-      "Which AQL query will retrieve all blood pressure measurements for a specific patient with EHR ID 'abc123'?",
+      'Which AQL query will retrieve all blood pressure measurements for a specific patient with EHR ID \'abc123\'?',
     options: [
-      "SELECT o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE e/ehr_id/value='abc123'",
-      "SELECT * FROM EHR WHERE patient_id = 'abc123' AND observation_type = 'blood_pressure'",
-      "GET blood_pressure FROM patient WHERE id = 'abc123'",
-      "FIND 'blood pressure' IN EHR 'abc123'",
+      'SELECT o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE e/ehr_id/value=\'abc123\'',
+      'SELECT * FROM EHR WHERE patient_id = \'abc123\' AND observation_type = \'blood_pressure\'',
+      'GET blood_pressure FROM patient WHERE id = \'abc123\'',
+      'FIND \'blood pressure\' IN EHR \'abc123\'',
     ],
     correctAnswer: 0,
     explanation:
@@ -427,11 +427,11 @@ export const levels: Level[] = [
     description:
       'The Archetype Architect tests your understanding of archetype design principles and best practices!',
     challenge:
-      "You need to design an archetype for recording a patient's smoking history. Which of the following approaches is most aligned with OpenEHR best practices?",
+      'You need to design an archetype for recording a patient\'s smoking history. Which of the following approaches is most aligned with OpenEHR best practices?',
     options: [
       'Create a single, comprehensive archetype that covers all possible smoking-related data points',
       'Design multiple, highly specific archetypes for each aspect of smoking history',
-      "Use an existing generic 'lifestyle factor' archetype and constrain it for smoking",
+      'Use an existing generic \'lifestyle factor\' archetype and constrain it for smoking',
       'Create a moderate-sized archetype focusing on key smoking history elements, with the ability to extend or specialize later',
     ],
     correctAnswer: 3,
@@ -454,7 +454,7 @@ export const levels: Level[] = [
     ],
     correctAnswer: 1,
     explanation:
-      "The appropriate approach is to create a new version of the archetype, deprecate the old one, and update systems gradually. This maintains backward compatibility for existing data while allowing systems to adopt the corrected version. It follows OpenEHR's principles of versioning and change management.",
+      'The appropriate approach is to create a new version of the archetype, deprecate the old one, and update systems gradually. This maintains backward compatibility for existing data while allowing systems to adopt the corrected version. It follows OpenEHR\'s principles of versioning and change management.',
     hint: 'Think about how to balance the need for correction with the reality of existing data and systems using the current version.',
     language: 'text',
   },
@@ -463,23 +463,23 @@ export const levels: Level[] = [
     description:
       'The Semantic Sage tests your ability to ensure semantic interoperability in OpenEHR implementations!',
     challenge:
-      "You're integrating two OpenEHR systems that use different terminology bindings for medication names. What's the best approach to ensure semantic interoperability?",
+      'You\'re integrating two OpenEHR systems that use different terminology bindings for medication names. What\'s the best approach to ensure semantic interoperability?',
     options: [
       'Force one system to adopt the terminology bindings of the other',
       'Create a mapping table between the two terminologies and translate during data exchange',
-      "Use OpenEHR's terminology binding features to map both to a common standard terminology",
+      'Use OpenEHR\'s terminology binding features to map both to a common standard terminology',
       'Store medication names as free text to avoid terminology conflicts',
     ],
     correctAnswer: 2,
     explanation:
-      "The best approach is to use OpenEHR's terminology binding features to map both systems to a common standard terminology. This preserves the local terminologies while ensuring semantic interoperability through a shared standard. It leverages OpenEHR's design for handling diverse terminologies.",
+      'The best approach is to use OpenEHR\'s terminology binding features to map both systems to a common standard terminology. This preserves the local terminologies while ensuring semantic interoperability through a shared standard. It leverages OpenEHR\'s design for handling diverse terminologies.',
     hint: 'Consider how OpenEHR is designed to handle terminology differences while maintaining semantic meaning across systems.',
     language: 'text',
   },
   {
     title: 'The Standardization Sage',
     description:
-      "The Standardization Sage challenges your understanding of OpenEHR's role in health data standardization!",
+      'The Standardization Sage challenges your understanding of OpenEHR\'s role in health data standardization!',
     challenge:
       'How does OpenEHR contribute to the standardization of health data?',
     options: [
@@ -503,13 +503,13 @@ export const levels: Level[] = [
     options: [
       'Use a single, standardized OpenEHR template for all countries, ignoring local law variations',
       'Create separate, country-specific OpenEHR implementations for each participating nation',
-      "Use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements",
+      'Use OpenEHR\'s archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements',
       'Avoid using OpenEHR and opt for a custom, project-specific data model instead',
     ],
     correctAnswer: 2,
     explanation:
-      "The best approach is to use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements. This allows for a standardized base of data collection while providing the flexibility to adhere to varying local data protection laws. It leverages OpenEHR's design for balancing standardization with localization.",
-    hint: "Think about how OpenEHR's architecture can allow for both standardization and customization to meet diverse requirements.",
+      'The best approach is to use OpenEHR\'s archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements. This allows for a standardized base of data collection while providing the flexibility to adhere to varying local data protection laws. It leverages OpenEHR\'s design for balancing standardization with localization.',
+    hint: 'Think about how OpenEHR\'s architecture can allow for both standardization and customization to meet diverse requirements.',
     language: 'text',
   },
   {
@@ -520,13 +520,13 @@ export const levels: Level[] = [
       'Which AQL query would correctly retrieve the latest blood pressure readings for all patients diagnosed with hypertension in the last year?',
     options: [
       'SELECT e/ehr_id/value, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE c/context/start_time > current_date - P1Y ORDER BY c/context/start_time DESC',
-      "SELECT e/ehr_id/value as ehr_id, p/data[at0001]/items[at0002]/value AS diagnosis, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS (OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] and EVALUATION p[openEHR-EHR-EVALUATION.problem_diagnosis.v1]) WHERE c/context/start_time > current_date - P1Y AND p/data[at0001]/items[at0002]/value/defining_code/code_string = 'I10' ORDER BY c/context/start_time DESC",
-      "SELECT * FROM EHR WHERE diagnosis = 'hypertension' AND diagnosis_date > current_date - 365 ORDER BY observation_date DESC LIMIT 1",
-      "GET latest_blood_pressure FROM patients WHERE diagnosis = 'hypertension' AND diagnosis_date > now() - interval '1 year'",
+      'SELECT e/ehr_id/value as ehr_id, p/data[at0001]/items[at0002]/value AS diagnosis, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS (OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] and EVALUATION p[openEHR-EHR-EVALUATION.problem_diagnosis.v1]) WHERE c/context/start_time > current_date - P1Y AND p/data[at0001]/items[at0002]/value/defining_code/code_string = \'I10\' ORDER BY c/context/start_time DESC',
+      'SELECT * FROM EHR WHERE diagnosis = \'hypertension\' AND diagnosis_date > current_date - 365 ORDER BY observation_date DESC LIMIT 1',
+      'GET latest_blood_pressure FROM patients WHERE diagnosis = \'hypertension\' AND diagnosis_date > now() - interval \'1 year\'',
     ],
     correctAnswer: 1,
     explanation:
-      "This AQL query correctly addresses all aspects of the requirement. It retrieves the EHR ID, diagnosis, and blood pressure readings (systolic and diastolic). It combines the blood pressure OBSERVATION with the problem_diagnosis EVALUATION to filter for hypertension. The query filters for compositions from the last year, specifically selects for hypertension diagnosis (using the ICD-10 code 'I10' for essential hypertension), and orders the results by date to get the latest readings. This demonstrates the need to often combine different archetypes (in this case, observations and evaluations) to get clinically meaningful results in real-world scenarios.",
+      'This AQL query correctly addresses all aspects of the requirement. It retrieves the EHR ID, diagnosis, and blood pressure readings (systolic and diastolic). It combines the blood pressure OBSERVATION with the problem_diagnosis EVALUATION to filter for hypertension. The query filters for compositions from the last year, specifically selects for hypertension diagnosis (using the ICD-10 code \'I10\' for essential hypertension), and orders the results by date to get the latest readings. This demonstrates the need to often combine different archetypes (in this case, observations and evaluations) to get clinically meaningful results in real-world scenarios.',
     hint: 'Consider how you would need to combine blood pressure readings with diagnosis information, and how to filter for both the time range and the specific diagnosis.',
     language: 'text',
   },

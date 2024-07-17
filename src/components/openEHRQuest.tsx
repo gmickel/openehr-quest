@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Terminal, Brain, Shield, Zap, VolumeX, Volume2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Brain, Shield, Terminal, Volume2, VolumeX, Zap } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
   Card,
-  CardHeader,
   CardContent,
   CardFooter,
+  CardHeader,
 } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -43,16 +43,16 @@ const OpenEHRQuest: React.FC = () => {
     isCorrect: false,
   });
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const { playCorrectSound, playWrongSound, playCompletionSound } =
-    useSoundEffects();
+  const { playCorrectSound, playWrongSound, playCompletionSound }
+    = useSoundEffects();
 
   const levels = levelsData;
 
   useEffect(() => {
     if (
-      gameState.currentLevel >= levels.length &&
-      levels.length > 0 &&
-      soundEnabled
+      gameState.currentLevel >= levels.length
+      && levels.length > 0
+      && soundEnabled
     ) {
       playCompletionSound();
     }
@@ -68,16 +68,19 @@ const OpenEHRQuest: React.FC = () => {
     const isCorrect = selectedIndex === currentLevel.correctAnswer;
 
     if (isCorrect) {
-      if (soundEnabled) playCorrectSound();
-      setGameState((prevState) => ({
+      if (soundEnabled)
+        playCorrectSound();
+      setGameState(prevState => ({
         ...prevState,
         score: prevState.score + (prevState.hintUsed ? 50 : 100),
         answerSelected: true,
         isCorrect: true,
       }));
-    } else {
-      if (soundEnabled) playWrongSound();
-      setGameState((prevState) => ({
+    }
+    else {
+      if (soundEnabled)
+        playWrongSound();
+      setGameState(prevState => ({
         ...prevState,
         playerHealth: Math.max(0, prevState.playerHealth - 20),
         answerSelected: true,
@@ -87,7 +90,7 @@ const OpenEHRQuest: React.FC = () => {
   };
 
   const nextLevel = () => {
-    setGameState((prevState) => ({
+    setGameState(prevState => ({
       ...prevState,
       currentLevel: prevState.currentLevel + 1,
       hintUsed: false,
@@ -101,7 +104,7 @@ const OpenEHRQuest: React.FC = () => {
   };
 
   const useHint = () => {
-    setGameState((prevState) => ({ ...prevState, hintUsed: true }));
+    setGameState(prevState => ({ ...prevState, hintUsed: true }));
   };
 
   const resetGame = () => {
@@ -131,7 +134,10 @@ const OpenEHRQuest: React.FC = () => {
             <p className="text-center mb-4">
               Your OpenEHR journey has come to an end.
             </p>
-            <p className="text-center mb-4">Final Score: {gameState.score}</p>
+            <p className="text-center mb-4">
+              Final Score:
+              {gameState.score}
+            </p>
           </CardContent>
           <CardFooter>
             <Button onClick={resetGame} className="w-full">
@@ -157,10 +163,13 @@ const OpenEHRQuest: React.FC = () => {
             <p className="text-center mb-4">
               You've become an OpenEHR Integration Master!
             </p>
-            <p className="text-center mb-4">Final Score: {gameState.score}</p>
+            <p className="text-center mb-4">
+              Final Score:
+              {gameState.score}
+            </p>
             <div className="flex flex-wrap justify-center gap-2 mt-4">
-              {gameState.badges.map((badge, index) => (
-                <Badge key={index} variant="secondary">
+              {gameState.badges.map(badge => (
+                <Badge key={badge} variant="secondary">
                   {badge}
                 </Badge>
               ))}
@@ -184,7 +193,7 @@ const OpenEHRQuest: React.FC = () => {
 
     return parts.map((part, index) => {
       if (part === '\n\n') {
-        return <br key={`br-${index}`} />;
+        return <br key={`br-${part}-${index}`} />;
       }
 
       if (part.trim().startsWith('<') || part.trim().startsWith('{')) {
@@ -194,7 +203,7 @@ const OpenEHRQuest: React.FC = () => {
       if (inCodeBlock) {
         return (
           <CodeHighlight
-            key={`code-${index}`}
+            key={`code-${part}-${index}`}
             code={part.trim()}
             language={language}
           />
@@ -202,7 +211,7 @@ const OpenEHRQuest: React.FC = () => {
       }
 
       return (
-        <p key={`text-${index}`} className="mb-2">
+        <p key={`text-${part}-${index}`} className="mb-2">
           {part}
         </p>
       );
@@ -215,16 +224,24 @@ const OpenEHRQuest: React.FC = () => {
         <CardHeader className="flex flex-row justify-between items-center">
           <h1 className="text-2xl font-bold">{currentLevel.title}</h1>
           <Button onClick={toggleSound} variant="ghost" size="icon">
-            {soundEnabled ? (
-              <Volume2 className="h-4 w-4" />
-            ) : (
-              <VolumeX className="h-4 w-4" />
-            )}
+            {soundEnabled
+              ? (
+                  <Volume2 className="h-4 w-4" />
+                )
+              : (
+                  <VolumeX className="h-4 w-4" />
+                )}
           </Button>
         </CardHeader>
         <CardContent>
           <p className="text-center text-gray-600 mb-4">
-            Level {gameState.currentLevel + 1} of {levels.length}
+            Level
+            {' '}
+            {gameState.currentLevel + 1}
+            {' '}
+            of
+            {' '}
+            {levels.length}
           </p>
           <Progress
             value={((gameState.currentLevel + 1) / levels.length) * 100}
@@ -239,12 +256,13 @@ const OpenEHRQuest: React.FC = () => {
             <h2 className="text-xl font-semibold mb-2">Challenge:</h2>
             <div className="bg-gray-800 text-white p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words">
               {renderChallenge(currentLevel.challenge, currentLevel.language)}
-            </div>{' '}
+            </div>
+            {' '}
           </div>
           <div className="space-y-2">
             {currentLevel.options.map((option, index) => (
               <Button
-                key={index}
+                key={`${gameState.currentLevel}-${index}`}
                 onClick={() => handleAnswer(index)}
                 className="w-full justify-start text-left whitespace-normal h-auto"
                 variant="outline"
@@ -280,7 +298,9 @@ const OpenEHRQuest: React.FC = () => {
                       onClick={useHint}
                       disabled={gameState.hintUsed || gameState.answerSelected}
                     >
-                      <Zap className="mr-2 h-4 w-4" /> Use Hint
+                      <Zap className="mr-2 h-4 w-4" />
+                      {' '}
+                      Use Hint
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -293,8 +313,8 @@ const OpenEHRQuest: React.FC = () => {
                 </Tooltip>
               </TooltipProvider>
               <div className="flex gap-2">
-                {gameState.badges.slice(-3).map((badge, index) => (
-                  <Badge key={index} variant="secondary">
+                {gameState.badges.slice(-3).map(badge => (
+                  <Badge key={badge} variant="secondary">
                     {badge}
                   </Badge>
                 ))}
@@ -312,11 +332,18 @@ const OpenEHRQuest: React.FC = () => {
           <div className="flex justify-between w-full mb-2">
             <div className="flex items-center">
               <Brain className="mr-2" />
-              <span>Score: {gameState.score}</span>
+              <span>
+                Score:
+                {gameState.score}
+              </span>
             </div>
             <div className="flex items-center">
               <Shield className="mr-2" />
-              <span>Health: {gameState.playerHealth}%</span>
+              <span>
+                Health:
+                {gameState.playerHealth}
+                %
+              </span>
             </div>
           </div>
           <HealthBar health={gameState.playerHealth} />
