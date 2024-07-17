@@ -520,14 +520,14 @@ export const levels: Level[] = [
       'Which AQL query would correctly retrieve the latest blood pressure readings for all patients diagnosed with hypertension in the last year?',
     options: [
       'SELECT e/ehr_id/value, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] WHERE c/context/start_time > current_date - P1Y ORDER BY c/context/start_time DESC',
+      "SELECT e/ehr_id/value as ehr_id, p/data[at0001]/items[at0002]/value AS diagnosis, o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value AS systolic, o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value AS diastolic FROM EHR e CONTAINS COMPOSITION c CONTAINS (OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1] and EVALUATION p[openEHR-EHR-EVALUATION.problem_diagnosis.v1]) WHERE c/context/start_time > current_date - P1Y AND p/data[at0001]/items[at0002]/value/defining_code/code_string = 'I10' ORDER BY c/context/start_time DESC",
       "SELECT * FROM EHR WHERE diagnosis = 'hypertension' AND diagnosis_date > current_date - 365 ORDER BY observation_date DESC LIMIT 1",
       "GET latest_blood_pressure FROM patients WHERE diagnosis = 'hypertension' AND diagnosis_date > now() - interval '1 year'",
-      "FIND blood_pressure IN EHR WHERE condition = 'hypertension' AND condition.date > 1 year ago ORDER BY date DESC",
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation:
-      'This AQL query correctly navigates the openEHR structure to retrieve the latest blood pressure readings. It uses the proper archetype paths, filters for compositions created within the last year, and orders the results to get the latest readings.',
-    hint: 'Remember that AQL queries need to navigate the openEHR structure and use archetype paths. Also consider how to filter for the time range and order the results.',
+      "This AQL query correctly addresses all aspects of the requirement. It retrieves the EHR ID, diagnosis, and blood pressure readings (systolic and diastolic). It combines the blood pressure OBSERVATION with the problem_diagnosis EVALUATION to filter for hypertension. The query filters for compositions from the last year, specifically selects for hypertension diagnosis (using the ICD-10 code 'I10' for essential hypertension), and orders the results by date to get the latest readings. This demonstrates the need to often combine different archetypes (in this case, observations and evaluations) to get clinically meaningful results in real-world scenarios.",
+    hint: 'Consider how you would need to combine blood pressure readings with diagnosis information, and how to filter for both the time range and the specific diagnosis.',
     language: 'text',
   },
 ];
