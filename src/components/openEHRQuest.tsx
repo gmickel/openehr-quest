@@ -30,6 +30,7 @@ interface GameState {
   hintUsed: boolean;
   answerSelected: boolean;
   isCorrect: boolean;
+  answeredWithoutHint: boolean;
 }
 
 const OpenEHRQuest: React.FC = () => {
@@ -41,6 +42,7 @@ const OpenEHRQuest: React.FC = () => {
     hintUsed: false,
     answerSelected: false,
     isCorrect: false,
+    answeredWithoutHint: false,
   });
   const [soundEnabled, setSoundEnabled] = useState(true);
   const { playCorrectSound, playWrongSound, playCompletionSound }
@@ -75,6 +77,7 @@ const OpenEHRQuest: React.FC = () => {
         score: prevState.score + (prevState.hintUsed ? 50 : 100),
         answerSelected: true,
         isCorrect: true,
+        answeredWithoutHint: !prevState.hintUsed,
       }));
     }
     else {
@@ -85,22 +88,27 @@ const OpenEHRQuest: React.FC = () => {
         playerHealth: Math.max(0, prevState.playerHealth - 20),
         answerSelected: true,
         isCorrect: false,
+        answeredWithoutHint: false,
       }));
     }
   };
 
   const nextLevel = () => {
-    setGameState(prevState => ({
-      ...prevState,
-      currentLevel: prevState.currentLevel + 1,
-      hintUsed: false,
-      answerSelected: false,
-      isCorrect: false,
-      badges: [
-        ...prevState.badges,
-        `Level ${prevState.currentLevel + 1} Master`,
-      ],
-    }));
+    setGameState((prevState) => {
+      const newBadges = [...prevState.badges];
+      if (prevState.isCorrect && prevState.answeredWithoutHint) {
+        newBadges.push(`Level ${prevState.currentLevel + 1} Master`);
+      }
+      return {
+        ...prevState,
+        currentLevel: prevState.currentLevel + 1,
+        hintUsed: false,
+        answerSelected: false,
+        isCorrect: false,
+        answeredWithoutHint: false,
+        badges: newBadges,
+      };
+    });
   };
 
   const useHint = () => {
@@ -116,6 +124,7 @@ const OpenEHRQuest: React.FC = () => {
       hintUsed: false,
       answerSelected: false,
       isCorrect: false,
+      answeredWithoutHint: false,
     });
   };
 
