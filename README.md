@@ -16,6 +16,8 @@ Ever wished learning about health informatics could be as exciting as a treasure
 
 ## The Birth of a Quiz
 
+This game was originally created as part of an internal company presentation at [Cistec](https://github.com/cistec-com). The full presentation that accompanies this game can be found [here](https://gmickel.github.io/openehr-presentation) / [repo](https://github.com/gmickel/openehr-presentation). Feel free to check it out for more context and information about OpenEHR!
+
 This little gem was conjured up with the help of Claude 3.5 Sonnet, an AI assistant with a knack for turning dry topics into delightful adventures. Together, we've created a learning experience that's as enjoyable as it is educational.
 
 ## Try It Out!
