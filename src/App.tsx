@@ -1,10 +1,8 @@
-import OpenEHRQuest from '@/components/openEHRQuest';
+import Quiz from '@/components/Quiz';
 
 function App() {
   return (
-    <div className="App">
-      <OpenEHRQuest />
-    </div>
+    <Quiz />
   );
 }
 

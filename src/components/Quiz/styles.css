@@ -1,0 +1,26 @@
+:not(span) > pre.shiki {
+  @apply p-4 rounded-md;
+}
+
+span > pre.shiki {
+  @apply bg-transparent !important;
+  display: inline-block;
+}
+
+span a {
+  @apply text-blue-600;
+}
+
+ol {
+  @apply list-decimal !important;
+  @apply my-4 !important;
+}
+
+ul {
+  @apply list-disc !important;
+  @apply my-4 !important;
+}
+
+li {
+  @apply ml-4 !important;
+}
