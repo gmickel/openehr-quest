@@ -29,3 +29,13 @@ Ready to test your OpenEHR prowess? Head over to [OpenEHR Integration Quest](htt
 Found a bug? Have an idea for an even quirkier question? Feel free to open an issue or submit a pull request. Let's make learning about OpenEHR a blast together!
 
 Remember, in the world of health informatics, every quest begins with a single click. Happy learning, adventurers! 🌟
+
+### Adding or Modifying Questions 🚀
+
+Contributing new questions or modifying existing ones is easy and doesn't require any coding knowledge! Here's how you can do it:
+
+1. Questions are stored as Markdown files in the `src/questions` directory.
+2. To add a new question, create a new `.md` file in this directory.
+3. To modify an existing question, find its `.md` file in the `src/questions` directory and edit it.
+
+For examples and advanced features, refer to the existing questions in the `src/questions` directory or check out the `example-question.md` file.
