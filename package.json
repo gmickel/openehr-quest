@@ -23,13 +23,16 @@
     "@radix-ui/react-tooltip": "1.1.2",
     "class-variance-authority": "0.7.0",
     "clsx": "2.1.1",
+    "gray-matter": "^4.0.3",
     "lucide-react": "0.408.0",
+    "marked": "^13.0.2",
     "react": "18.3.1",
     "react-confetti": "6.1.0",
     "react-dom": "18.3.1",
     "shiki": "1.10.3",
     "tailwind-merge": "2.4.0",
-    "tailwindcss-animate": "1.0.7"
+    "tailwindcss-animate": "1.0.7",
+    "yaml": "^2.4.5"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.23.0",

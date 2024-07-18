@@ -5,6 +5,7 @@ import animatePlugin from 'tailwindcss-animate';
 export default {
   darkMode: ['class'],
   content: [
+    './src/components/Quiz/styles.css',
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',

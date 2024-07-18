@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { codeToHtml } from 'shiki';
+import { codeToHtml } from 'shiki/bundle/web';
 
 interface CodeHighlightProps {
   code: string;
   language: string;
+  variant?: 'block' | 'inline';
 }
 
-const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language }) => {
+const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language, variant = 'block' }) => {
   const [highlightedCode, setHighlightedCode] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,13 +17,13 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language }) => {
       try {
         const html = await codeToHtml(code, {
           lang: language,
-          theme: 'github-dark', // You can change this to any theme you prefer
+          theme: variant === 'inline' ? 'github-light' : 'night-owl',
         });
         setHighlightedCode(html);
       }
       catch (error) {
         console.error('Error highlighting code:', error);
-        setHighlightedCode(`<pre><code>${code}</code></pre>`);
+        setHighlightedCode(`<code>${code}</code>`);
       }
       finally {
         setIsLoading(false);
@@ -30,15 +31,26 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language }) => {
     };
 
     highlight();
-  }, [code, language]);
+  }, [code, language, variant]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <span>Loading...</span>;
+  }
+
+  if (variant === 'inline') {
+    // For inline, we'll strip the pre and code tags and just return the highlighted content
+    const strippedHtml = highlightedCode
+      .replace(/<pre.*?>/g, '')
+      .replace(/<\/pre>/g, '')
+      .replace(/<code.*?>/g, '')
+      .replace(/<\/code>/g, '');
+
+    return <span dangerouslySetInnerHTML={{ __html: strippedHtml }} />;
   }
 
   return (
     <div
-      className="rounded-md overflow-hidden"
+      className="overflow-hidden"
       dangerouslySetInnerHTML={{ __html: highlightedCode }}
     />
   );

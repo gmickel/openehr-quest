@@ -4,7 +4,10 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   base: '/openehr-quest/',
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
+  assetsInclude: ['**/*.md'],
   optimizeDeps: {
     include: ['shiki'],
   },
