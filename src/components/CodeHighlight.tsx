@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { codeToHtml } from 'shiki/bundle/web';
+import { codeToHtml } from 'shiki';
 
 interface CodeHighlightProps {
   code: string;
@@ -39,13 +39,15 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, language, variant =
 
   if (variant === 'inline') {
     // For inline, we'll strip the pre and code tags and just return the highlighted content
+
+    /*
     const strippedHtml = highlightedCode
       .replace(/<pre.*?>/g, '')
       .replace(/<\/pre>/g, '')
       .replace(/<code.*?>/g, '')
       .replace(/<\/code>/g, '');
-
-    return <span dangerouslySetInnerHTML={{ __html: strippedHtml }} />;
+    */
+    return <span dangerouslySetInnerHTML={{ __html: highlightedCode }} />;
   }
 
   return (

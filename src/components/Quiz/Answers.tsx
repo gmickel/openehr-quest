@@ -25,7 +25,7 @@ const Answers: React.FC<AnswersProps> = ({
       <h2 className="text-lg font-semibold">Answers</h2>
       {answers.map((answer, index) => {
         const isSelected = selectedAnswer === index;
-        const isCorrect = correctAnswer === index;
+        const isCorrect = correctAnswer - 1 === index;
 
         let buttonClass = '';
         if (answered) {
@@ -42,7 +42,7 @@ const Answers: React.FC<AnswersProps> = ({
             key={`answer-${index}`}
             onClick={() => onAnswer(index)}
             className={cn(
-              'w-full justify-start text-left h-auto',
+              'w-full justify-start text-left h-auto whitespace-pre-wrap',
               buttonClass,
             )}
             variant="outline"

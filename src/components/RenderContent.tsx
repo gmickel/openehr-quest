@@ -14,6 +14,9 @@ export function renderContent({ content, isInline = false }: RenderContentProps)
   const tokens = marked.lexer(content);
 
   return tokens.map((token, index) => {
+    if (token.type === 'space') {
+      return <br key={`br-${index}`} />;
+    }
     if (token.type === 'paragraph') {
       // Handle inline code within paragraphs
       const parts = token.text.split(/(```[^`\n]+```|`[^`\n]+`)/);
@@ -34,7 +37,12 @@ export function renderContent({ content, isInline = false }: RenderContentProps)
             }
             else {
               // This is regular text
-              return part;
+              return (
+                <span
+                  key={`text-${index}-${i}`}
+                  dangerouslySetInnerHTML={{ __html: marked.parseInline(part) }}
+                />
+              );
             }
           })}
         </p>
@@ -51,9 +59,10 @@ export function renderContent({ content, isInline = false }: RenderContentProps)
       );
     }
     else {
+      // This is regular text
       return (
         <span
-          key={`text-${index}`}
+          key={`text-other-${index}`}
           dangerouslySetInnerHTML={{ __html: marked.parser([token]) }}
         />
       );

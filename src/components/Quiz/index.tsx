@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Brain, Shield, Terminal, Volume2, VolumeX, Zap } from 'lucide-react';
+import { AlertCircle, Brain, Github, Shield, Terminal, Volume2, VolumeX, Zap } from 'lucide-react';
 import GameOver from './GameOver.tsx';
 import Completion from './Completion.tsx';
 import Context from './Context.tsx';
@@ -23,9 +23,10 @@ import {
 } from '@/components/ui/tooltip';
 import HealthBar from '@/components/HealthBar';
 import useSoundEffects from '@/hooks/useSoundEffects';
-import type { ParsedQuestion } from '@/lib/questionParser';
-import { loadAllQuestions } from '@/lib/questionParser';
+import type { ParsedQuestion } from '@/lib/markdownParser.ts';
+import { loadAllQuestions } from '@/lib/markdownParser.ts';
 import { renderContent } from '@/components/RenderContent';
+import { config } from '@/config';
 import './styles.css';
 
 interface GameState {
@@ -55,6 +56,42 @@ const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<ParsedQuestion[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdditionalInformationOpen, setIsAdditionalInformationOpen] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
+
+  const currentQuestion = useMemo(() => questions[gameState.currentLevel], [questions, gameState.currentLevel]);
+
+  const handleAnswer = useCallback((selectedIndex: number) => {
+    setSelectedAnswer(selectedIndex);
+    const currentQuestion = questions[gameState.currentLevel];
+    const isCorrect = selectedIndex === currentQuestion.correctAnswer - 1;
+    const isTimedOut = selectedIndex === -1;
+
+    setGameState((prevState) => {
+      const incrementScoreBy = prevState.hintUsed ? 50 : 100;
+      return {
+        ...prevState,
+        score: isCorrect ? prevState.score + incrementScoreBy : prevState.score,
+        playerHealth: isCorrect ? prevState.playerHealth : Math.max(0, prevState.playerHealth - 20),
+        answerSelected: true,
+        isCorrect,
+        answeredWithoutHint: isCorrect && !prevState.hintUsed,
+      };
+    });
+
+    if (soundEnabled) {
+      if (isCorrect) {
+        playCorrectSound();
+      }
+      else {
+        playWrongSound();
+      }
+    }
+
+    if (isTimedOut) {
+      setSelectedAnswer(currentQuestion.correctAnswer - 1);
+    }
+  }, [gameState.currentLevel, questions, soundEnabled, playCorrectSound, playWrongSound]);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -83,32 +120,26 @@ const Quiz: React.FC = () => {
     }
   }, [gameState.currentLevel, questions.length, soundEnabled, playCompletionSound]);
 
-  const handleAnswer = useCallback((selectedIndex: number) => {
-    setSelectedAnswer(selectedIndex);
-    const currentQuestion = questions[gameState.currentLevel];
-    const isCorrect = selectedIndex === currentQuestion.correctAnswer;
+  useEffect(() => {
+    if (currentQuestion?.timeLimit && !gameState.answerSelected) {
+      setTimeRemaining(currentQuestion.timeLimit);
+      const timer = setInterval(() => {
+        setTimeRemaining((prevTime) => {
+          if (prevTime === null || prevTime <= 1) {
+            clearInterval(timer);
+            handleAnswer(-1); // -1 indicates time's up
+            return null;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
 
-    setGameState((prevState) => {
-      const incrementScoreBy = prevState.hintUsed ? 50 : 100;
-      return ({
-        ...prevState,
-        score: isCorrect ? prevState.score + incrementScoreBy : prevState.score,
-        playerHealth: isCorrect ? prevState.playerHealth : Math.max(0, prevState.playerHealth - 20),
-        answerSelected: true,
-        isCorrect,
-        answeredWithoutHint: isCorrect && !prevState.hintUsed,
-      });
-    });
-
-    if (soundEnabled) {
-      if (isCorrect) {
-        playCorrectSound();
-      }
-      else {
-        playWrongSound();
-      }
+      return () => clearInterval(timer);
     }
-  }, [gameState.currentLevel, questions, soundEnabled, playCorrectSound, playWrongSound]);
+    else {
+      setTimeRemaining(null);
+    }
+  }, [currentQuestion, gameState.answerSelected, handleAnswer]);
 
   const nextLevel = useCallback(() => {
     setGameState((prevState) => {
@@ -149,14 +180,38 @@ const Quiz: React.FC = () => {
     setSoundEnabled(prev => !prev);
   }, []);
 
-  const currentQuestion = useMemo(() => questions[gameState.currentLevel], [questions, gameState.currentLevel]);
+  const getBorderDifficultyColor = (difficulty: string) => {
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        return 'border-green-500';
+      case 'intermediate':
+        return 'border-yellow-500';
+      case 'expert':
+        return 'border-red-500';
+      default:
+        return 'border-border';
+    }
+  };
+
+  const getTextDifficultyColor = (difficulty: string) => {
+    switch (difficulty.toLowerCase()) {
+      case 'beginner':
+        return 'text-green-500';
+      case 'intermediate':
+        return 'text-yellow-500';
+      case 'expert':
+        return 'text-red-500';
+      default:
+        return 'text-muted-foreground';
+    }
+  };
 
   if (isLoading) {
     return <div>Loading questions...</div>;
   }
 
   if (gameState.playerHealth <= 0) {
-    return <GameOver score={gameState.score} onReset={resetGame} />;
+    return <GameOver score={gameState.score} badges={gameState.badges} onReset={resetGame} />;
   }
 
   if (gameState.currentLevel >= questions.length && questions.length > 0) {
@@ -167,35 +222,87 @@ const Quiz: React.FC = () => {
     return <div>No questions available</div>;
   }
 
+  const TimerDisplay = ({ timeRemaining }: { timeRemaining: number | null }) => {
+    if (timeRemaining === null)
+      return null;
+
+    return (
+      <div className="flex items-center space-x-2 text-yellow-600">
+        <AlertCircle className="h-5 w-5" />
+        <span>
+          Time remaining:&nbsp;
+          {timeRemaining}
+          s
+        </span>
+      </div>
+    );
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
       <Card className="w-full max-w-4xl">
         <CardHeader className="flex flex-row justify-between items-center">
           <h1 className="text-2xl font-bold">{currentQuestion.title}</h1>
-          <Button onClick={toggleSound} variant="ghost" size="icon">
-            {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Button onClick={toggleSound} variant="ghost" size="icon">
+              {soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+            </Button>
+            {config.github && (
+              <a
+                href={config.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                <Github className="h-5 w-5" />
+              </a>
+            )}
+          </div>
         </CardHeader>
         <CardContent>
-          <p className="text-center text-gray-600 mb-4">
-            Level
-            {' '}
-            {gameState.currentLevel + 1}
-            {' '}
-            of
-            {' '}
-            {questions.length}
+          <p className="text-center text-gray-600 mb-4 flex items-center justify-between">
+            <span>
+              Level
+              {' '}
+              {gameState.currentLevel + 1}
+              {' '}
+              of
+              {' '}
+              {questions.length}
+            </span>
+            {currentQuestion.difficulty && (
+              <span>
+                Difficulty:
+                {' '}
+                <span className={`${getTextDifficultyColor(currentQuestion.difficulty)}`}>
+                  {currentQuestion.difficulty}
+                </span>
+              </span>
+            )}
+
           </p>
           <Progress
             value={((gameState.currentLevel + 1) / questions.length) * 100}
             className="w-full mb-4"
           />
-          <Alert className="my-4">
+          <Alert className={`my-4 ${getBorderDifficultyColor(currentQuestion.difficulty ?? '')}`}>
             <Terminal className="h-4 w-4" />
-            <AlertTitle>Mission Briefing</AlertTitle>
-            <AlertDescription>{currentQuestion.description}</AlertDescription>
+            <AlertTitle>
+              <div className="flex items-center justify-between space-x-1">
+                Mission Briefing
+                <TimerDisplay timeRemaining={timeRemaining} />
+              </div>
+            </AlertTitle>
+            <AlertDescription>
+              {currentQuestion.description}
+            </AlertDescription>
           </Alert>
-          <Context question={currentQuestion} renderContent={renderContent} />
+          <Context
+            question={currentQuestion}
+            renderContent={renderContent}
+            isAdditionalInformationOpen={isAdditionalInformationOpen}
+            setIsAdditionalInformationOpen={setIsAdditionalInformationOpen}
+          />
         </CardContent>
       </Card>
       <Card className="w-full max-w-4xl mt-4">
