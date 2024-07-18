@@ -6,6 +6,8 @@ Welcome to the OpenEHR Integration Quest! This fun and quirky quiz game is desig
 
 Ever wished learning about health informatics could be as exciting as a treasure hunt? Well, now it can be! Dive into the world of OpenEHR through a series of challenging questions and watch your expertise grow.
 
+![OpenEHR Integration Quest Screenshot](/images/screenshot.png)
+
 ## Features
 
 - 🎮 Interactive quiz format
