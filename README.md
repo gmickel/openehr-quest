@@ -6,15 +6,21 @@ Welcome to the OpenEHR Integration Quest! This fun and quirky quiz game is desig
 
 Ever wished learning about health informatics could be as exciting as a treasure hunt? Well, now it can be! Dive into the world of OpenEHR through a series of challenging questions and watch your expertise grow.
 
+## 🛠️ Build Your Own Quiz Game!
+
+Want to create your own quiz game?
+
+I extracted the core functionality of OpenEHR Quest into a reusable project called [CodeQuest](https://github.com/gmickel/codequest).
+
 ![OpenEHR Integration Quest Screenshot](/images/screenshot.png)
 
 ## Features
 
-- 🎮 Interactive quiz format
-- 🧠 Covers key OpenEHR concepts
-- 🏆 Earn badges as you progress
-- 💡 Hint system for when you're stuck
-- 🌟 Designed for both newbies and OpenEHR veterans
+* 🎮 Interactive quiz format
+* 🧠 Covers key OpenEHR concepts
+* 🏆 Earn badges as you progress
+* 💡 Hint system for when you're stuck
+* 🌟 Designed for both newbies and OpenEHR veterans
 
 ## The Birth of a Quiz
 
