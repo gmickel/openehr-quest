@@ -1,8 +1,9 @@
 ---
 title: The Integration Inquisitor
 description: The Integration Inquisitor will test your knowledge of posting compositions to an OpenEHR system.
-level: 7
-correctAnswer: 4
+level: 8
+correctAnswers: [2, 4]
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ Which HTTP method and content type should you use when posting a composition to 
 
 ## Answers
 
-- GET request with application/json content type
-- POST request with application/xml content type
-- PUT request with text/plain content type
-- POST request with application/json content type
+* GET request with application/json content type
+* POST request with application/xml content type
+* PUT request with text/plain content type
+* POST request with application/json content type
 
 ## Explanation
 

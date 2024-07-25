@@ -3,6 +3,7 @@ title: The Composition Composer
 description: The Composition Composer challenges you to orchestrate the elements of an OpenEHR composition!
 level: 6
 correctAnswer: 4
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ Which of the following is NOT typically found at the root level of an OpenEHR co
 
 ## Answers
 
-- context
-- category
-- content
-- observation
+* context
+* category
+* content
+* observation
 
 ## Explanation
 

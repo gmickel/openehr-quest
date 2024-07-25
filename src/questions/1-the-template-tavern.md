@@ -3,6 +3,7 @@ title: The Template Tavern
 description: Welcome to The Template Tavern! Your first quest is to decipher a mysterious web template. Choose the correct interpretation to proceed. Caution! Quests will increase in difficulty as you progress.
 level: 1
 correctAnswer: 3
+difficulty: "Beginner"
 ---
 
 ## Context
@@ -40,10 +41,10 @@ What does this template represent?
 
 ## Answers
 
-- It's a recipe for a health potion
-- It's a map to the hidden treasure of OpenEHR
-- It's a blood pressure measurement of 120 mm[Hg]
-- It's the secret code to unlock the next dungeon
+* It's a recipe for a health potion
+* It's a map to the hidden treasure of OpenEHR
+* It's a blood pressure measurement of 120 mm[Hg]
+* It's the secret code to unlock the next dungeon
 
 ## Explanation
 

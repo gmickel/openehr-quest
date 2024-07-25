@@ -1,8 +1,9 @@
 ---
 title: The Constraint Connoisseur
 description: The Constraint Connoisseur tests your ability to understand and apply constraints in OpenEHR archetypes!
-level: 9
+level: 11
 correctAnswer: 4
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ Which of the following is a valid way to constrain a quantity data type in an ar
 
 ## Answers
 
-- Setting a specific value that must be used
-- Defining a range of allowed values
-- Specifying a list of allowed units
-- All of the above
+* Setting a specific value that must be used
+* Defining a range of allowed values
+* Specifying a list of allowed units
+* All of the above
 
 ## Explanation
 

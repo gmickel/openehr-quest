@@ -1,8 +1,9 @@
 ---
 title: The Template Transformer
 description: The Template Transformer challenges you to understand the relationship between archetypes and templates!
-level: 15
+level: 16
 correctAnswer: 2
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Understanding the distinction and relationship between archetypes and templates 
 
 ## Answers
 
-- Templates are used to create archetypes
-- Templates combine and constrain archetypes for specific use cases
-- Templates and archetypes are interchangeable terms
-- Templates define the basic clinical concepts, while archetypes specialize them
+* Templates are used to create archetypes
+* Templates combine and constrain archetypes for specific use cases
+* Templates and archetypes are interchangeable terms
+* Templates define the basic clinical concepts, while archetypes specialize them
 
 ## Explanation
 

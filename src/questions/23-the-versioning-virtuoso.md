@@ -3,6 +3,7 @@ title: The Versioning Virtuoso
 description: The Versioning Virtuoso challenges your understanding of change management in OpenEHR systems!
 level: 23
 correctAnswer: 2
+difficulty: "Expert"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Proper versioning and change management are essential for maintaining data integ
 
 ## Answers
 
-- Immediately replace the archetype with a corrected version in all systems
-- Create a new version of the archetype, deprecate the old one, and update systems gradually
-- Leave the archetype as-is and instruct users to be aware of the error
-- Create a completely new archetype with a different ID to replace the erroneous one
+* Immediately replace the archetype with a corrected version in all systems
+* Create a new version of the archetype, deprecate the old one, and update systems gradually
+* Leave the archetype as-is and instruct users to be aware of the error
+* Create a completely new archetype with a different ID to replace the erroneous one
 
 ## Explanation
 

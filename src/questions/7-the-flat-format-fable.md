@@ -1,8 +1,9 @@
 ---
 title: The Flat Format Fable
 description: The Flat Format Fable challenges you to understand different data representations in OpenEHR!
-level: 10
+level: 7
 correctAnswer: 3
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Please note that the <a href="https://specifications.openehr.org/releases/ITS-RE
 
 ## Answers
 
-- To compress data for more efficient storage
-- To simplify data entry forms for clinicians
-- To provide a simplified format for API calls and data exchange
-- To flatten the organizational hierarchy in healthcare institutions
+* To compress data for more efficient storage
+* To simplify data entry forms for clinicians
+* To provide a simplified format for API calls and data exchange
+* To flatten the organizational hierarchy in healthcare institutions
 
 ## Explanation
 

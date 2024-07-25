@@ -3,6 +3,7 @@ title: The Terminology Tamer
 description: The Terminology Tamer tests your knowledge of integrating external terminologies with OpenEHR!
 level: 17
 correctAnswer: 3
+difficulty: "Expert"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Effective integration with standardized terminologies is crucial for semantic in
 
 ## Answers
 
-- It doesn't - OpenEHR uses its own terminology exclusively
-- External terminologies replace OpenEHR archetypes
-- Through terminology bindings in archetypes and templates
-- By converting all external terms into OpenEHR-specific codes
+* It doesn't - OpenEHR uses its own terminology exclusively
+* External terminologies replace OpenEHR archetypes
+* Through terminology bindings in archetypes and templates
+* By converting all external terms into OpenEHR-specific codes
 
 ## Explanation
 

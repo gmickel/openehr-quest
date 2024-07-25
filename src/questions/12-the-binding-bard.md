@@ -1,8 +1,9 @@
 ---
 title: The Binding Bard
 description: The Binding Bard challenges you to understand the intricacies of binding terminologies in OpenEHR!
-level: 11
+level: 12
 correctAnswer: 2
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Terminology binding is crucial for ensuring semantic interoperability between Op
 
 ## Answers
 
-- Direct insertion of codes into archetypes
-- Using the 'term_bindings' section in archetypes
-- Creating separate terminology archetypes
-- Modifying the reference model to include terminologies
+* Direct insertion of codes into archetypes
+* Using the 'term_bindings' section in archetypes
+* Creating separate terminology archetypes
+* Modifying the reference model to include terminologies
 
 ## Explanation
 

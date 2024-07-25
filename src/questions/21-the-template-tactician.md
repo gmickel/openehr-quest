@@ -3,6 +3,7 @@ title: The Template Tactician
 description: The Template Tactician challenges you to apply advanced template concepts in a real-world scenario!
 level: 21
 correctAnswer: 2
+difficulty: "Expert"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ A hospital needs to create a discharge summary template that includes vital sign
 
 ## Answers
 
-- Create a new archetype that combines all the required elements
-- Use a template to constrain and combine existing archetypes for each section
-- Directly store the discharge summary data in the EHR without using archetypes or templates
-- Create separate templates for each section and link them in the EHR
+* Create a new archetype that combines all the required elements
+* Use a template to constrain and combine existing archetypes for each section
+* Directly store the discharge summary data in the EHR without using archetypes or templates
+* Create separate templates for each section and link them in the EHR
 
 ## Explanation
 

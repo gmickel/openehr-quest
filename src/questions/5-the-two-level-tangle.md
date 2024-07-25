@@ -3,6 +3,7 @@ title: The Two-Level Tangle
 description: The Two-Level Tangle tests your grasp of OpenEHR's modeling approach!
 level: 5
 correctAnswer: 2
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ The two-level modeling approach is a fundamental aspect of OpenEHR's design, ena
 
 ## Answers
 
-- It refers to having separate models for inpatient and outpatient care
-- It separates the technical reference model from the clinical knowledge model
-- It means having two levels of user access in the EHR system
-- It describes a two-step process for creating medical records
+* It refers to having separate models for inpatient and outpatient care
+* It separates the technical reference model from the clinical knowledge model
+* It means having two levels of user access in the EHR system
+* It describes a two-step process for creating medical records
 
 ## Explanation
 

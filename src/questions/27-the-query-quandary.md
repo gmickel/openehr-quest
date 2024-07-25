@@ -3,6 +3,7 @@ title: The Query Quandary
 description: The Query Quandary tests your ability to construct complex AQL queries for real-world scenarios!
 level: 27
 correctAnswer: 2
+difficulty: "Expert"
 ---
 
 ## Context
@@ -17,7 +18,8 @@ If you want to learn more about AQL, check out the <a href="https://specificatio
 
 ## Answers
 
-- 1.
+* 1.
+
 ```sql
 SELECT e/ehr_id/value,
        o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic,
@@ -28,7 +30,9 @@ CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1]
 WHERE c/context/start_time > current_date - P1Y
 ORDER BY c/context/start_time DESC
 ```
-- 2.
+
+* 2.
+
 ```sql
 SELECT e/ehr_id/value as ehr_id,
        p/data[at0001]/items[at0002]/value AS diagnosis,
@@ -42,7 +46,9 @@ WHERE c/context/start_time > current_date - P1Y
   AND p/data[at0001]/items[at0002]/value/defining_code/code_string = 'I10'
 ORDER BY c/context/start_time DESC
 ```
-- 3.
+
+* 3.
+
 ```sql
 SELECT * FROM EHR
 WHERE diagnosis = 'hypertension'
@@ -50,7 +56,9 @@ WHERE diagnosis = 'hypertension'
 ORDER BY observation_date DESC
 LIMIT 1
 ```
-- 4.
+
+* 4.
+
 ```sql
 GET latest_blood_pressure
 FROM patients

@@ -1,8 +1,9 @@
 ---
 title: The Querying Quest
 description: The Querying Quest tests your knowledge of data retrieval in OpenEHR systems!
-level: 14
+level: 15
 correctAnswer: 2
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ Which query language is specifically designed for use with OpenEHR systems?
 
 ## Answers
 
-- SQL (Structured Query Language)
-- AQL (Archetype Query Language)
-- SPARQL (SPARQL Protocol and RDF Query Language)
-- XQuery (XML Query Language)
+* SQL (Structured Query Language)
+* AQL (Archetype Query Language)
+* SPARQL (SPARQL Protocol and RDF Query Language)
+* XQuery (XML Query Language)
 
 ## Explanation
 

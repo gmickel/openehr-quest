@@ -3,6 +3,7 @@ title: The Archetype Archives
 description: You've entered the Archetype Archives. Decipher the ancient scrolls to progress!
 level: 2
 correctAnswer: 2
+difficulty: "Beginner"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Read more about archetypes in the <a href="https://specifications.openehr.org/re
 
 ## Answers
 
-- To store patient data
-- To define reusable clinical concepts
-- To create user interfaces
-- To manage database connections
+* To store patient data
+* To define reusable clinical concepts
+* To create user interfaces
+* To manage database connections
 
 ## Explanation
 

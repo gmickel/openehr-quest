@@ -3,6 +3,7 @@ title: The Composition Conjurer
 description: You've made it to the Composition Conjurer's lair! Your task is to craft a composition that will impress the Conjurer.
 level: 19
 correctAnswer: 1
+difficulty: "Expert"
 ---
 
 ## Context
@@ -17,7 +18,8 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
 
 ## Answers
 
-- 1.
+* 1.
+
 ```json
 {
   "composition": {
@@ -47,7 +49,9 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
   }
 }
 ```
-- 2.
+
+* 2.
+
 ```json
 {
   "patient": {
@@ -58,7 +62,9 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
   }
 }
 ```
-- 3.
+
+* 3.
+
 ```json
 {
   "openEHR": {
@@ -69,7 +75,9 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
   }
 }
 ```
-- 4.
+
+* 4.
+
 ```json
 {
   "composition": {

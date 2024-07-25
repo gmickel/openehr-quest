@@ -1,8 +1,9 @@
 ---
 title: The Versioning Vault
 description: Welcome to the Versioning Vault, where the history of health records is preserved through the ages!
-level: 8
+level: 9
 correctAnswer: 2
+difficulty: "Intermediate"
 ---
 
 ## Context
@@ -17,10 +18,10 @@ Versioning in OpenEHR is a fundamental feature that allows for the preservation 
 
 ## Answers
 
-- You must always retrieve the latest version
-- You can specify a version number or time to get a specific historical version
-- Versioning is not supported in OpenEHR
-- You need to retrieve all versions and manually find the one you want
+* You must always retrieve the latest version
+* You can specify a version number or time to get a specific historical version
+* Versioning is not supported in OpenEHR
+* You need to retrieve all versions and manually find the one you want
 
 ## Explanation
 

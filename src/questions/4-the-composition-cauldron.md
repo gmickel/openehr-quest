@@ -3,6 +3,7 @@ title: The Composition Cauldron
 description: Welcome to the Composition Cauldron, where data elements are brewed into meaningful records!
 level: 4
 correctAnswer: 3
+difficulty: "Beginner"
 ---
 
 ## Context
@@ -13,10 +14,10 @@ In OpenEHR, what is a composition primarily used for?
 
 ## Answers
 
-- To define database schemas
-- To create user interfaces
-- To represent a clinical document or event
-- To manage system security
+* To define database schemas
+* To create user interfaces
+* To represent a clinical document or event
+* To manage system security
 
 ## Explanation
 
