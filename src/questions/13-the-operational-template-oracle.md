@@ -14,10 +14,10 @@ What is the primary purpose of an Operational Template (OPT) in OpenEHR?
 
 ## Answers
 
-* To replace archetypes in modern OpenEHR implementations
-* To provide a fully specialized and flattened form of a template for direct use in systems
-* To create new archetypes based on existing ones
-* To define the operational procedures in a healthcare setting
+- To replace archetypes in modern OpenEHR implementations
+- To provide a fully specialized and flattened form of a template for direct use in systems
+- To create new archetypes based on existing ones
+- To define the operational procedures in a healthcare setting
 
 ## Explanation
 

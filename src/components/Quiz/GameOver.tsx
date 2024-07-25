@@ -26,7 +26,7 @@ const GameOver: React.FC<GameOverProps> = ({ score, onReset, badges }) => {
           <h1 className="text-2xl font-bold text-center">Game Over</h1>
         </CardHeader>
         <CardContent>
-          <p className="text-center mb-4">Your OpenEHR journey has come to an end.</p>
+          <p className="text-center mb-4">Your Code Quest journey has come to an end.</p>
           <p className="text-center mb-4">
             Final Score:
             {score}

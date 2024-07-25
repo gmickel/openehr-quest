@@ -18,10 +18,10 @@ Interoperability is a key goal in healthcare IT. OpenEHR is one piece of the puz
 
 ## Answers
 
-* Its use of a proprietary data format
-* The separation of information models from clinical models
-* Its reliance on a single, universal database system
-* The requirement for all systems to use the same software
+- Its use of a proprietary data format
+- The separation of information models from clinical models
+- Its reliance on a single, universal database system
+- The requirement for all systems to use the same software
 
 ## Explanation
 

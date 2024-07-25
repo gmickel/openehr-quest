@@ -14,10 +14,10 @@ Which query language is specifically designed for use with OpenEHR systems?
 
 ## Answers
 
-* SQL (Structured Query Language)
-* AQL (Archetype Query Language)
-* SPARQL (SPARQL Protocol and RDF Query Language)
-* XQuery (XML Query Language)
+- SQL (Structured Query Language)
+- AQL (Archetype Query Language)
+- SPARQL (SPARQL Protocol and RDF Query Language)
+- XQuery (XML Query Language)
 
 ## Explanation
 

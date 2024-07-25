@@ -37,21 +37,21 @@ You're tasked with implementing a function to find the most frequent element in 
 
 ```go
 func mostFrequent(arr []int) int {
-	maxCount := 0
-	result := arr[0]
-	for i := range arr {
-		count := 0
-		for j := range arr {
-			if arr[i] == arr[j] {
-				count++
-			}
-		}
-		if count > maxCount {
-			maxCount = count
-			result = arr[i]
-		}
-	}
-	return result
+    maxCount := 0
+    result := arr[0]
+    for i := range arr {
+        count := 0
+        for j := range arr {
+            if arr[i] == arr[j] {
+                count++
+            }
+        }
+        if count > maxCount {
+            maxCount = count
+            result = arr[i]
+        }
+    }
+    return result
 }
 ```
 

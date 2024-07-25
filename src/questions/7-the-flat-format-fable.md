@@ -18,10 +18,10 @@ Please note that the <a href="https://specifications.openehr.org/releases/ITS-RE
 
 ## Answers
 
-* To compress data for more efficient storage
-* To simplify data entry forms for clinicians
-* To provide a simplified format for API calls and data exchange
-* To flatten the organizational hierarchy in healthcare institutions
+- To compress data for more efficient storage
+- To simplify data entry forms for clinicians
+- To provide a simplified format for API calls and data exchange
+- To flatten the organizational hierarchy in healthcare institutions
 
 ## Explanation
 

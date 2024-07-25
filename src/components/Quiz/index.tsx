@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { AlertCircle, Brain, Github, Shield, Terminal, Volume2, VolumeX, Zap } from 'lucide-react';
-import GameOver from './GameOver.tsx';
-import Completion from './Completion.tsx';
-import Context from './Context.tsx';
-import Answers from './Answers.tsx';
-import Result from './Result.tsx';
+import GameOver from '@/components/Quiz/GameOver';
+import Completion from '@/components/Quiz/Completion';
+import Context from '@/components/Quiz/Context';
+import Answers from '@/components/Quiz/Answers';
+import Result from '@/components/Quiz/Result';
+import LoadingScreen from '@/components/LoadingScreen';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,10 +22,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import HealthBar from '@/components/HealthBar';
+import HealthBar from '@/components/Quiz/HealthBar';
 import useSoundEffects from '@/hooks/useSoundEffects';
 import type { ParsedQuestion } from '@/lib/markdownParser.ts';
 import { loadAllQuestions } from '@/lib/markdownParser.ts';
+import { isCorrectAnswer } from '@/lib/quiz-utils';
 import { renderContent } from '@/components/RenderContent';
 import { config } from '@/config';
 import './styles.css';
@@ -58,13 +60,15 @@ const Quiz: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAdditionalInformationOpen, setIsAdditionalInformationOpen] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState<number | null>(null);
+  const [isQuizComplete, setIsQuizComplete] = useState(false);
 
   const currentQuestion = useMemo(() => questions[gameState.currentLevel], [questions, gameState.currentLevel]);
+  const isLastQuestion = gameState.currentLevel === questions.length - 1;
 
   const handleAnswer = useCallback((selectedIndex: number) => {
     setSelectedAnswer(selectedIndex);
     const currentQuestion = questions[gameState.currentLevel];
-    const isCorrect = selectedIndex === currentQuestion.correctAnswer - 1;
+    const isCorrect = isCorrectAnswer(currentQuestion, selectedIndex);
     const isTimedOut = selectedIndex === -1;
 
     setGameState((prevState) => {
@@ -89,7 +93,19 @@ const Quiz: React.FC = () => {
     }
 
     if (isTimedOut) {
-      setSelectedAnswer(currentQuestion.correctAnswer - 1);
+      // Handle timed out scenario for both single and multiple correct answers
+      if (currentQuestion.correctAnswer !== undefined) {
+        setSelectedAnswer(currentQuestion.correctAnswer - 1);
+      }
+      else if (currentQuestion.correctAnswers !== undefined && currentQuestion.correctAnswers.length > 0) {
+        // If multiple correct answers, select the first one
+        setSelectedAnswer(currentQuestion.correctAnswers[0] - 1);
+      }
+      else {
+        // Fallback if no correct answer is defined (shouldn't happen, but just in case)
+        console.error('No correct answer defined for the current question');
+        setSelectedAnswer(null);
+      }
     }
   }, [gameState.currentLevel, questions, soundEnabled, playCorrectSound, playWrongSound]);
 
@@ -147,9 +163,14 @@ const Quiz: React.FC = () => {
       if (prevState.isCorrect && prevState.answeredWithoutHint) {
         newBadges.push(`Level ${prevState.currentLevel + 1} Master`);
       }
+      const newLevel = prevState.currentLevel + 1;
+      if (isLastQuestion) {
+        setIsQuizComplete(true);
+        return prevState; // Don't update the state if it's the last question
+      }
       return {
         ...prevState,
-        currentLevel: prevState.currentLevel + 1,
+        currentLevel: newLevel,
         hintUsed: false,
         answerSelected: false,
         isCorrect: false,
@@ -157,7 +178,7 @@ const Quiz: React.FC = () => {
         badges: newBadges,
       };
     });
-  }, []);
+  }, [questions.length, isLastQuestion]);
 
   const useHint = useCallback(() => {
     setGameState(prevState => ({ ...prevState, hintUsed: true }));
@@ -174,6 +195,7 @@ const Quiz: React.FC = () => {
       isCorrect: false,
       answeredWithoutHint: false,
     });
+    setIsQuizComplete(false);
   }, []);
 
   const toggleSound = useCallback(() => {
@@ -207,14 +229,14 @@ const Quiz: React.FC = () => {
   };
 
   if (isLoading) {
-    return <div>Loading questions...</div>;
+    return <LoadingScreen message="Loading questions..." />;
   }
 
   if (gameState.playerHealth <= 0) {
     return <GameOver score={gameState.score} badges={gameState.badges} onReset={resetGame} />;
   }
 
-  if (gameState.currentLevel >= questions.length && questions.length > 0) {
+  if (isQuizComplete) {
     return <Completion score={gameState.score} badges={gameState.badges} onReset={resetGame} />;
   }
 
@@ -308,17 +330,17 @@ const Quiz: React.FC = () => {
       <Card className="w-full max-w-4xl mt-4">
         <CardContent>
           <Answers
-            answers={currentQuestion.answers}
+            question={currentQuestion}
             onAnswer={handleAnswer}
             disabled={gameState.answerSelected}
             selectedAnswer={selectedAnswer}
-            correctAnswer={currentQuestion.correctAnswer}
             answered={gameState.answerSelected}
           />
           {gameState.answerSelected && (
             <Result
-              isCorrect={gameState.isCorrect}
-              explanation={currentQuestion.explanation}
+              question={currentQuestion}
+              selectedAnswer={selectedAnswer}
+              isLastQuestion={isLastQuestion}
               onNext={nextLevel}
             />
           )}

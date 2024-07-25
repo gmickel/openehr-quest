@@ -14,10 +14,10 @@ Which HTTP method and content type should you use when posting a composition to 
 
 ## Answers
 
-* GET request with application/json content type
-* POST request with application/xml content type
-* PUT request with text/plain content type
-* POST request with application/json content type
+- GET request with application/json content type
+- POST request with application/xml content type
+- PUT request with text/plain content type
+- POST request with application/json content type
 
 ## Explanation
 

@@ -18,10 +18,10 @@ Which of the following is true about demographic information in OpenEHR?
 
 ## Answers
 
-* Demographic data is stored directly in compositions
-* OpenEHR uses a separate demographic model
-* Demographic data is always part of the EHR
-* OpenEHR doesn't support storing demographic information
+- Demographic data is stored directly in compositions
+- OpenEHR uses a separate demographic model
+- Demographic data is always part of the EHR
+- OpenEHR doesn't support storing demographic information
 
 ## Explanation
 

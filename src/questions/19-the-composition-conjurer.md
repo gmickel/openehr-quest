@@ -18,9 +18,7 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
 
 ## Answers
 
-* 1.
-
-```json
+- ```json
 {
   "composition": {
     "content": [
@@ -50,9 +48,7 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
 }
 ```
 
-* 2.
-
-```json
+- ```json
 {
   "patient": {
     "vitals": {
@@ -63,9 +59,7 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
 }
 ```
 
-* 3.
-
-```json
+- ```json
 {
   "openEHR": {
     "body_temperature": {
@@ -76,9 +70,7 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
 }
 ```
 
-* 4.
-
-```json
+- ```json
 {
   "composition": {
     "archetype": "openEHR-EHR-OBSERVATION.body_temperature.v2",

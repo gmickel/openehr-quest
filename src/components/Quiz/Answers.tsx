@@ -2,30 +2,31 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import RenderContent from '@/components/RenderContent';
 import { cn } from '@/lib/utils';
+import type { ParsedQuestion } from '@/lib/markdownParser';
 
 interface AnswersProps {
-  answers: string[];
+  question: ParsedQuestion;
   onAnswer: (index: number) => void;
   disabled: boolean;
   selectedAnswer: number | null;
-  correctAnswer: number;
   answered: boolean;
 }
 
 const Answers: React.FC<AnswersProps> = ({
-  answers,
+  question,
   onAnswer,
   disabled,
   selectedAnswer,
-  correctAnswer,
   answered,
 }) => {
+  const correctAnswers = question.correctAnswers || [question.correctAnswer];
+
   return (
     <div className="space-y-4 mt-4">
       <h2 className="text-lg font-semibold">Answers</h2>
-      {answers.map((answer, index) => {
+      {question.answers.map((answer, index) => {
         const isSelected = selectedAnswer === index;
-        const isCorrect = correctAnswer - 1 === index;
+        const isCorrect = correctAnswers.includes(index + 1);
 
         let buttonClass = '';
         if (answered) {

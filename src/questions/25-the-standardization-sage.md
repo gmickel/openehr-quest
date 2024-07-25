@@ -14,10 +14,10 @@ How does OpenEHR contribute to the standardization of health data?
 
 ## Answers
 
-* By enforcing a single, universal data format for all health records
-* Through its two-level modeling approach and shared archetype definitions
-* By requiring all healthcare providers to use the same software
-* Through government-mandated data structures
+- By enforcing a single, universal data format for all health records
+- Through its two-level modeling approach and shared archetype definitions
+- By requiring all healthcare providers to use the same software
+- Through government-mandated data structures
 
 ## Explanation
 

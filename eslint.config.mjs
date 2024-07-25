@@ -6,4 +6,7 @@ export default antfu({
     quotes: 'single',
     semi: true,
   },
+  ignores: [
+    'src/questions/*.md',
+  ],
 });

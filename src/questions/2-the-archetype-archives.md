@@ -18,10 +18,10 @@ Read more about archetypes in the <a href="https://specifications.openehr.org/re
 
 ## Answers
 
-* To store patient data
-* To define reusable clinical concepts
-* To create user interfaces
-* To manage database connections
+- To store patient data
+- To define reusable clinical concepts
+- To create user interfaces
+- To manage database connections
 
 ## Explanation
 

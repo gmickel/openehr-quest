@@ -10,7 +10,8 @@ export interface ParsedQuestion {
     outro: string;
   };
   answers: string[];
-  correctAnswer: number;
+  correctAnswer?: number;
+  correctAnswers?: number[];
   timeLimit?: number;
   difficulty?: string;
   explanation: string;
@@ -112,6 +113,7 @@ export function parseQuestionContent(content: string): ParsedQuestion {
     description: frontMatter.description,
     level: frontMatter.level,
     correctAnswer: frontMatter.correctAnswer,
+    correctAnswers: frontMatter.correctAnswers,
     timeLimit: frontMatter.timeLimit,
     difficulty: frontMatter.difficulty,
     ...parsedContent,

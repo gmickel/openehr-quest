@@ -18,10 +18,10 @@ Achieving semantic interoperability is crucial for meaningful data exchange betw
 
 ## Answers
 
-* Force one system to adopt the terminology bindings of the other
-* Create a mapping table between the two terminologies and translate during data exchange
-* Use OpenEHR's terminology binding features to map both to a common standard terminology
-* Store medication names as free text to avoid terminology conflicts
+- Force one system to adopt the terminology bindings of the other
+- Create a mapping table between the two terminologies and translate during data exchange
+- Use OpenEHR's terminology binding features to map both to a common standard terminology
+- Store medication names as free text to avoid terminology conflicts
 
 ## Explanation
 

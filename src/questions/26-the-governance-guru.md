@@ -18,10 +18,10 @@ Balancing standardization with local requirements is a key challenge in global h
 
 ## Answers
 
-* Use a single, standardized OpenEHR template for all countries, ignoring local law variations
-* Create separate, country-specific OpenEHR implementations for each participating nation
-* Use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements
-* Avoid using OpenEHR and opt for a custom, project-specific data model instead
+- Use a single, standardized OpenEHR template for all countries, ignoring local law variations
+- Create separate, country-specific OpenEHR implementations for each participating nation
+- Use OpenEHR's archetype and template mechanism to create a core dataset, with country-specific extensions to meet local requirements
+- Avoid using OpenEHR and opt for a custom, project-specific data model instead
 
 ## Explanation
 

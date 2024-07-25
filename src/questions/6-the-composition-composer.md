@@ -14,10 +14,10 @@ Which of the following is NOT typically found at the root level of an OpenEHR co
 
 ## Answers
 
-* context
-* category
-* content
-* observation
+- context
+- category
+- content
+- observation
 
 ## Explanation
 

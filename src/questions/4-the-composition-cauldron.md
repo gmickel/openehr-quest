@@ -14,10 +14,10 @@ In OpenEHR, what is a composition primarily used for?
 
 ## Answers
 
-* To define database schemas
-* To create user interfaces
-* To represent a clinical document or event
-* To manage system security
+- To define database schemas
+- To create user interfaces
+- To represent a clinical document or event
+- To manage system security
 
 ## Explanation
 

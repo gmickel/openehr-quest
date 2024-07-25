@@ -14,10 +14,10 @@ You need to design an archetype for recording a patient's smoking history. Which
 
 ## Answers
 
-* Create a single, comprehensive archetype that covers all possible smoking-related data points
-* Design multiple, highly specific archetypes for each aspect of smoking history
-* Use an existing generic 'lifestyle factor' archetype and constrain it for smoking
-* Create a moderate-sized archetype focusing on key smoking history elements, with the ability to extend or specialize later
+- Create a single, comprehensive archetype that covers all possible smoking-related data points
+- Design multiple, highly specific archetypes for each aspect of smoking history
+- Use an existing generic 'lifestyle factor' archetype and constrain it for smoking
+- Create a moderate-sized archetype focusing on key smoking history elements, with the ability to extend or specialize later
 
 ## Explanation
 

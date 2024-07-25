@@ -18,9 +18,7 @@ Which AQL query will retrieve all blood pressure measurements for a specific pat
 
 ## Answers
 
-* 1.
-
-```sql
+- ```sql
 SELECT o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic,
        o/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastolic
 FROM EHR e
@@ -29,21 +27,15 @@ CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.blood_pressure.v1]
 WHERE e/ehr_id/value='abc123'
 ```
 
-* 2.
-
-```sql
+- ```sql
 SELECT * FROM EHR WHERE patient_id = 'abc123' AND observation_type = 'blood_pressure'
 ```
 
-* 3.
-
-```sql
+- ```sql
 GET blood_pressure FROM patient WHERE id = 'abc123'
 ```
 
-* 4.
-
-```sql
+- ```sql
 FIND 'blood pressure' IN EHR 'abc123'
 ```
 

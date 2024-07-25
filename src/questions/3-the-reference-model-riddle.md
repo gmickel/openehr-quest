@@ -18,10 +18,10 @@ Read more about the Reference Model in the <a href="https://specifications.opene
 
 ## Answers
 
-* To store patient data directly
-* To define the structure of clinical archetypes
-* To provide a stable set of abstracting building blocks for clinical information
-* To manage user authentication in EHR systems
+- To store patient data directly
+- To define the structure of clinical archetypes
+- To provide a stable set of abstracting building blocks for clinical information
+- To manage user authentication in EHR systems
 
 ## Explanation
 

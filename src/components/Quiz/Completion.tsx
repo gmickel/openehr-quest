@@ -28,7 +28,13 @@ const Completion: React.FC<CompletionProps> = ({ score, badges, onReset }) => {
           <h1 className="text-2xl font-bold text-center">🎉 Congratulations! 🎉</h1>
         </CardHeader>
         <CardContent>
-          <p className="text-center mb-4">You've become an OpenEHR Integration Master!</p>
+          <p className="text-center mb-4">
+            You've become a
+            {' '}
+            {config.title}
+            {' '}
+            Master!
+          </p>
           <p className="text-center mb-4">
             Final Score:&nbsp;
             {score}

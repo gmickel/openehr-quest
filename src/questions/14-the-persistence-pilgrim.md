@@ -18,10 +18,10 @@ Which statement best describes how data is typically stored in an OpenEHR system
 
 ## Answers
 
-* Data is stored in relational tables matching the structure of archetypes
-* Each composition is stored as a single document in a NoSQL database
-* Data is stored in a node + path + value format, preserving the hierarchical structure
-* Archetypes themselves store the data values directly
+- Data is stored in relational tables matching the structure of archetypes
+- Each composition is stored as a single document in a NoSQL database
+- Data is stored in a node + path + value format, preserving the hierarchical structure
+- Archetypes themselves store the data values directly
 
 ## Explanation
 

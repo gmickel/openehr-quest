@@ -18,10 +18,10 @@ Terminology binding is crucial for ensuring semantic interoperability between Op
 
 ## Answers
 
-* Direct insertion of codes into archetypes
-* Using the 'term_bindings' section in archetypes
-* Creating separate terminology archetypes
-* Modifying the reference model to include terminologies
+- Direct insertion of codes into archetypes
+- Using the 'term_bindings' section in archetypes
+- Creating separate terminology archetypes
+- Modifying the reference model to include terminologies
 
 ## Explanation
 

@@ -14,10 +14,10 @@ A hospital needs to create a discharge summary template that includes vital sign
 
 ## Answers
 
-* Create a new archetype that combines all the required elements
-* Use a template to constrain and combine existing archetypes for each section
-* Directly store the discharge summary data in the EHR without using archetypes or templates
-* Create separate templates for each section and link them in the EHR
+- Create a new archetype that combines all the required elements
+- Use a template to constrain and combine existing archetypes for each section
+- Directly store the discharge summary data in the EHR without using archetypes or templates
+- Create separate templates for each section and link them in the EHR
 
 ## Explanation
 
