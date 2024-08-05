@@ -33,7 +33,7 @@ Create a composition for a patient's body temperature. The archetype ID is 'open
                     {
                       "value": {
                         "magnitude": 37.5,
-                        "units": "°C"
+                        "units": "Cel"
                       }
                     }
                   ]
